@@ -7,5 +7,6 @@
         public DateTime GeboorteDatum { get; set; }
         public string EMail { get; set; }
         public string Adres { get; set; }
+        public List<Vak> Vakken { get; set; }
     }
 }
