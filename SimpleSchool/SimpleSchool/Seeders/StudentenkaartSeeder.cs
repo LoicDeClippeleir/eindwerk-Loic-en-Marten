@@ -8,7 +8,7 @@ namespace SimpleSchool.Seeders
     {
         public void Seed(ModelBuilder modelBuilder)
         {
-            List<StudentenKaart> studentenkaarten = StudentenKaart.Faker.Generate(10);
+            List<StudentenKaart> studentenkaarten = StudentenKaartFaker.Faker.Generate(10);
             modelBuilder.Entity<StudentenKaart>().HasData(studentenkaarten);
         }
     }
