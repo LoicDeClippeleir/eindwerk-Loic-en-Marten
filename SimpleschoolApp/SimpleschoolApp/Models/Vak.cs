@@ -21,8 +21,7 @@
     public enum Type
     {
         Theoretisch,
-        Praktisch
-            faka
+        Praktisch,
         
     }
 }
