@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleSchool.Data;
 
@@ -11,9 +12,11 @@ using SimpleSchool.Data;
 namespace SimpleSchool.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250508172631_ IDk")]
+    partial class IDk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,82 +273,82 @@ namespace SimpleSchool.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Adres = "231 Selena Mission",
-                            EMail = "qui",
-                            GeboorteDatum = new DateTime(2025, 1, 19, 17, 15, 44, 526, DateTimeKind.Local).AddTicks(6447),
-                            Naam = "Rem maiores enim dignissimos quibusdam hic corporis ipsum asperiores ut et deleniti sunt explicabo et quasi fugit dignissimos illum porro."
+                            Adres = "438 Swift Forest",
+                            EMail = "et",
+                            GeboorteDatum = new DateTime(2024, 6, 19, 17, 22, 28, 11, DateTimeKind.Local).AddTicks(2918),
+                            Naam = "Nobis est non maxime temporibus ad maxime a non accusantium quas similique voluptas aut dolores aliquid quis est ut qui."
                         },
                         new
                         {
                             Id = 12,
-                            Adres = "699 Joany Pine",
-                            EMail = "dolor",
-                            GeboorteDatum = new DateTime(2024, 5, 30, 23, 16, 56, 20, DateTimeKind.Local).AddTicks(142),
-                            Naam = "Et repudiandae natus qui magnam maxime quia culpa minima eaque deleniti et veritatis qui sunt dolores omnis excepturi aliquid repellat."
+                            Adres = "1340 Leland Motorway",
+                            EMail = "ea",
+                            GeboorteDatum = new DateTime(2024, 9, 19, 20, 54, 26, 634, DateTimeKind.Local).AddTicks(1542),
+                            Naam = "Quia esse est modi ea praesentium molestiae sed sed repellendus veritatis dicta unde consequatur minima ea consectetur doloribus qui ea."
                         },
                         new
                         {
                             Id = 13,
-                            Adres = "302 Schneider Track",
-                            EMail = "labore",
-                            GeboorteDatum = new DateTime(2025, 1, 19, 18, 13, 33, 187, DateTimeKind.Local).AddTicks(333),
-                            Naam = "Officiis voluptatem voluptatibus aliquid tempore sunt placeat voluptatem deserunt non nulla vitae provident voluptatibus tempore doloremque ut velit voluptas ipsum."
+                            Adres = "1734 Donny Vista",
+                            EMail = "perferendis",
+                            GeboorteDatum = new DateTime(2025, 2, 23, 8, 23, 12, 478, DateTimeKind.Local).AddTicks(2266),
+                            Naam = "Velit est fugit in delectus laboriosam quas facere similique rerum quidem eum praesentium beatae architecto temporibus quam repellat adipisci commodi."
                         },
                         new
                         {
                             Id = 14,
-                            Adres = "269 Amelie Walk",
-                            EMail = "rerum",
-                            GeboorteDatum = new DateTime(2025, 2, 7, 19, 3, 59, 470, DateTimeKind.Local).AddTicks(4300),
-                            Naam = "Eveniet labore voluptatum non sit ad et consequatur dolor accusantium hic molestias aliquid est laborum quia illum quo tempore laboriosam."
+                            Adres = "89235 Cleo Shoals",
+                            EMail = "illo",
+                            GeboorteDatum = new DateTime(2024, 5, 15, 22, 36, 41, 385, DateTimeKind.Local).AddTicks(2683),
+                            Naam = "Similique molestias omnis minus voluptas exercitationem et dolores officiis veritatis quidem saepe voluptas quasi rerum repellendus quod commodi quo voluptatem."
                         },
                         new
                         {
                             Id = 15,
-                            Adres = "5745 Erdman Pike",
-                            EMail = "repudiandae",
-                            GeboorteDatum = new DateTime(2024, 11, 2, 23, 35, 43, 94, DateTimeKind.Local).AddTicks(3718),
-                            Naam = "Rerum animi cum cumque maxime aperiam sint voluptas voluptatem ad sint ut et tempore eveniet aut quis aut vel quasi."
+                            Adres = "975 Mariano Rest",
+                            EMail = "et",
+                            GeboorteDatum = new DateTime(2024, 10, 6, 13, 37, 7, 845, DateTimeKind.Local).AddTicks(3218),
+                            Naam = "Facere doloremque expedita maiores magnam vel velit voluptatem non exercitationem nemo ratione cumque odio quam voluptate et qui ut occaecati."
                         },
                         new
                         {
                             Id = 16,
-                            Adres = "657 Lebsack Street",
-                            EMail = "et",
-                            GeboorteDatum = new DateTime(2024, 7, 29, 12, 11, 13, 581, DateTimeKind.Local).AddTicks(7571),
-                            Naam = "Minima ullam placeat quasi voluptatibus incidunt dolores sed laudantium dicta consequatur est deleniti repellendus repellendus ut molestias nobis a voluptatibus."
+                            Adres = "0510 Zane Forest",
+                            EMail = "sunt",
+                            GeboorteDatum = new DateTime(2024, 7, 1, 15, 17, 27, 366, DateTimeKind.Local).AddTicks(5586),
+                            Naam = "Consequuntur voluptatum odit nisi amet sed temporibus dolorem qui maxime voluptatem est tempora aspernatur necessitatibus vel quae incidunt recusandae voluptate."
                         },
                         new
                         {
                             Id = 17,
-                            Adres = "7538 Vivienne Ways",
-                            EMail = "sit",
-                            GeboorteDatum = new DateTime(2024, 10, 13, 22, 27, 13, 799, DateTimeKind.Local).AddTicks(3003),
-                            Naam = "Eos et est voluptate qui praesentium laborum praesentium vitae eaque odio omnis saepe fuga ea omnis occaecati eveniet odit quos."
+                            Adres = "61218 Hane Inlet",
+                            EMail = "sapiente",
+                            GeboorteDatum = new DateTime(2024, 6, 1, 2, 23, 36, 161, DateTimeKind.Local).AddTicks(1589),
+                            Naam = "Atque deserunt laboriosam rerum qui quia laboriosam voluptatem beatae nobis cum magnam et quae animi non culpa id dicta in."
                         },
                         new
                         {
                             Id = 18,
-                            Adres = "663 Lydia Crossing",
-                            EMail = "vero",
-                            GeboorteDatum = new DateTime(2024, 11, 14, 15, 9, 28, 618, DateTimeKind.Local).AddTicks(7737),
-                            Naam = "Quaerat excepturi beatae tempora deserunt non corrupti expedita eius ipsum nisi qui dicta sint officiis necessitatibus non tenetur perferendis praesentium."
+                            Adres = "23110 Wiegand Trace",
+                            EMail = "consectetur",
+                            GeboorteDatum = new DateTime(2025, 2, 26, 20, 36, 5, 656, DateTimeKind.Local).AddTicks(7502),
+                            Naam = "Et voluptatem quae voluptatibus rerum praesentium nemo illo tenetur dignissimos voluptatum soluta nam perspiciatis qui tempora est voluptate et animi."
                         },
                         new
                         {
                             Id = 19,
-                            Adres = "69556 Dangelo Via",
-                            EMail = "dolorum",
-                            GeboorteDatum = new DateTime(2025, 2, 6, 1, 50, 21, 107, DateTimeKind.Local).AddTicks(6984),
-                            Naam = "Mollitia aut labore aut unde minus odit odit placeat saepe atque porro harum voluptatem fugiat omnis ut earum facere in."
+                            Adres = "6896 Carroll Key",
+                            EMail = "nam",
+                            GeboorteDatum = new DateTime(2025, 4, 28, 1, 38, 57, 953, DateTimeKind.Local).AddTicks(2958),
+                            Naam = "Ad ratione enim et id non omnis dolorem magni architecto laborum dolor tenetur eveniet recusandae expedita sed est rem natus."
                         },
                         new
                         {
                             Id = 20,
-                            Adres = "6426 Haven Pike",
-                            EMail = "beatae",
-                            GeboorteDatum = new DateTime(2024, 9, 2, 10, 5, 35, 583, DateTimeKind.Local).AddTicks(941),
-                            Naam = "Enim voluptatum expedita quia qui libero dolorem ab ratione quisquam aliquam earum minus modi similique qui beatae natus sint architecto."
+                            Adres = "43269 Alicia Fords",
+                            EMail = "molestiae",
+                            GeboorteDatum = new DateTime(2024, 7, 1, 17, 33, 20, 113, DateTimeKind.Local).AddTicks(1862),
+                            Naam = "Omnis aut id praesentium soluta recusandae velit voluptate explicabo ducimus saepe minima rerum animi tempore sed qui quae maxime eius."
                         });
                 });
 
@@ -391,100 +394,100 @@ namespace SimpleSchool.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Adres = "79835 Easter Locks",
-                            EMail = "qui",
-                            GeboorteDatum = new DateTime(2025, 3, 28, 6, 4, 4, 853, DateTimeKind.Local).AddTicks(6553),
-                            Naam = "Est repellendus laboriosam enim ut ea fugit sit consectetur praesentium ipsum vel voluptatem consequatur dolor consectetur est dicta nihil veniam.",
+                            Adres = "111 Schroeder Cliff",
+                            EMail = "ea",
+                            GeboorteDatum = new DateTime(2025, 1, 9, 16, 5, 41, 736, DateTimeKind.Local).AddTicks(1068),
+                            Naam = "Aut quas fugiat illo assumenda similique fuga asperiores earum adipisci et quas amet qui inventore beatae autem sit eos consequatur.",
                             OpleidingId = 11,
                             StudentenkaartId = 11
                         },
                         new
                         {
                             Id = 12,
-                            Adres = "697 Graham Well",
-                            EMail = "fuga",
-                            GeboorteDatum = new DateTime(2024, 12, 26, 10, 56, 1, 932, DateTimeKind.Local).AddTicks(5730),
-                            Naam = "Nesciunt sit perspiciatis sunt similique odio ea rem possimus vero vitae dolorem doloribus officia in est aut enim est possimus.",
+                            Adres = "287 Myles Garden",
+                            EMail = "sint",
+                            GeboorteDatum = new DateTime(2024, 12, 26, 1, 47, 14, 872, DateTimeKind.Local).AddTicks(4793),
+                            Naam = "Sint dolor voluptas quidem odit voluptates rem optio adipisci quas et quod recusandae et ratione rem non sit qui recusandae.",
                             OpleidingId = 12,
                             StudentenkaartId = 12
                         },
                         new
                         {
                             Id = 13,
-                            Adres = "861 Hillary Run",
-                            EMail = "omnis",
-                            GeboorteDatum = new DateTime(2024, 8, 24, 6, 36, 33, 881, DateTimeKind.Local).AddTicks(9565),
-                            Naam = "Neque voluptatibus consequuntur numquam deleniti aut error quia odit accusamus sit dolore vel et odit laborum quae nihil sint voluptatem.",
+                            Adres = "0349 Kristopher Orchard",
+                            EMail = "rerum",
+                            GeboorteDatum = new DateTime(2025, 3, 29, 6, 47, 49, 608, DateTimeKind.Local).AddTicks(4718),
+                            Naam = "Qui ut alias aut doloremque sit explicabo natus sunt ut facere odit tenetur cupiditate consequatur qui velit corrupti autem aspernatur.",
                             OpleidingId = 13,
                             StudentenkaartId = 13
                         },
                         new
                         {
                             Id = 14,
-                            Adres = "2341 Carol Shoal",
-                            EMail = "numquam",
-                            GeboorteDatum = new DateTime(2024, 7, 3, 19, 1, 25, 435, DateTimeKind.Local).AddTicks(5990),
-                            Naam = "Qui iure voluptatem deserunt quo animi delectus omnis ut nesciunt fugit qui atque inventore sunt harum quos vero ipsum accusamus.",
+                            Adres = "712 Jon Mountains",
+                            EMail = "eos",
+                            GeboorteDatum = new DateTime(2024, 8, 30, 17, 11, 26, 955, DateTimeKind.Local).AddTicks(2147),
+                            Naam = "Non ut corporis sint minus assumenda totam molestias sunt asperiores non pariatur eaque illo cumque non repudiandae accusantium qui quo.",
                             OpleidingId = 14,
                             StudentenkaartId = 14
                         },
                         new
                         {
                             Id = 15,
-                            Adres = "65915 Malcolm Tunnel",
-                            EMail = "voluptates",
-                            GeboorteDatum = new DateTime(2024, 8, 1, 22, 47, 50, 768, DateTimeKind.Local).AddTicks(6571),
-                            Naam = "Aliquam voluptatibus quo impedit architecto aut tempora dolorem totam itaque et sapiente ex et itaque qui quo quibusdam molestiae est.",
+                            Adres = "8688 Hyatt Ramp",
+                            EMail = "neque",
+                            GeboorteDatum = new DateTime(2024, 9, 27, 20, 21, 27, 108, DateTimeKind.Local).AddTicks(8895),
+                            Naam = "Blanditiis quisquam cupiditate distinctio est harum magni voluptas voluptatem doloribus libero est impedit quos at inventore consequuntur quasi explicabo molestiae.",
                             OpleidingId = 15,
                             StudentenkaartId = 15
                         },
                         new
                         {
                             Id = 16,
-                            Adres = "307 Freddie Streets",
-                            EMail = "beatae",
-                            GeboorteDatum = new DateTime(2024, 5, 26, 23, 26, 2, 252, DateTimeKind.Local).AddTicks(5745),
-                            Naam = "Veniam molestias quisquam ab aliquid veritatis ut animi velit provident debitis repudiandae ut quaerat perspiciatis vero qui qui tempora soluta.",
+                            Adres = "65569 Chadrick River",
+                            EMail = "voluptatem",
+                            GeboorteDatum = new DateTime(2024, 12, 17, 20, 26, 20, 296, DateTimeKind.Local).AddTicks(7852),
+                            Naam = "Ea quo sed voluptates totam molestias voluptatum illo esse qui occaecati aperiam totam iure aliquid aspernatur aut ducimus velit voluptas.",
                             OpleidingId = 16,
                             StudentenkaartId = 16
                         },
                         new
                         {
                             Id = 17,
-                            Adres = "889 Bogan Stream",
-                            EMail = "voluptate",
-                            GeboorteDatum = new DateTime(2025, 1, 4, 9, 1, 20, 319, DateTimeKind.Local).AddTicks(5526),
-                            Naam = "Eius enim quia adipisci dolor explicabo ipsum similique dicta deserunt tempora delectus ullam ex inventore nam est consequatur ducimus et.",
+                            Adres = "7728 Muller Ridge",
+                            EMail = "autem",
+                            GeboorteDatum = new DateTime(2024, 9, 1, 18, 18, 32, 951, DateTimeKind.Local).AddTicks(3607),
+                            Naam = "Quos nesciunt voluptatem ut assumenda ea magni repellat dolores voluptatem nihil repellendus odio ut accusamus quaerat dolorem consequatur veritatis similique.",
                             OpleidingId = 17,
                             StudentenkaartId = 17
                         },
                         new
                         {
                             Id = 18,
-                            Adres = "216 Genevieve Tunnel",
-                            EMail = "tenetur",
-                            GeboorteDatum = new DateTime(2025, 4, 20, 13, 7, 57, 28, DateTimeKind.Local).AddTicks(8514),
-                            Naam = "Et labore libero optio ipsa voluptatem quibusdam voluptas doloremque perferendis quia porro nulla et odio dolor consectetur earum quia iste.",
+                            Adres = "03475 Fahey Camp",
+                            EMail = "neque",
+                            GeboorteDatum = new DateTime(2025, 3, 10, 5, 55, 39, 640, DateTimeKind.Local).AddTicks(7856),
+                            Naam = "Quia quasi quisquam reprehenderit omnis placeat aliquam et minima non qui autem possimus earum velit praesentium aut velit nesciunt nisi.",
                             OpleidingId = 18,
                             StudentenkaartId = 18
                         },
                         new
                         {
                             Id = 19,
-                            Adres = "772 Lolita Knolls",
-                            EMail = "est",
-                            GeboorteDatum = new DateTime(2025, 1, 8, 16, 15, 22, 197, DateTimeKind.Local).AddTicks(5827),
-                            Naam = "Incidunt animi temporibus illo magnam aliquam distinctio necessitatibus sit aut ea corporis distinctio consequatur ut vel praesentium expedita laudantium reiciendis.",
+                            Adres = "3394 Ebert Landing",
+                            EMail = "eum",
+                            GeboorteDatum = new DateTime(2025, 2, 23, 1, 43, 54, 440, DateTimeKind.Local).AddTicks(1158),
+                            Naam = "Impedit et praesentium voluptatem culpa doloribus illum delectus consectetur optio sed velit necessitatibus autem possimus nihil laudantium sit amet omnis.",
                             OpleidingId = 19,
                             StudentenkaartId = 19
                         },
                         new
                         {
                             Id = 20,
-                            Adres = "865 Augusta Spring",
-                            EMail = "asperiores",
-                            GeboorteDatum = new DateTime(2025, 4, 20, 0, 4, 40, 848, DateTimeKind.Local).AddTicks(9273),
-                            Naam = "Velit sit assumenda quod repellat odio quam culpa tempore ut itaque ad voluptas et omnis ut maiores et culpa repellat.",
+                            Adres = "70612 Thea Corner",
+                            EMail = "accusantium",
+                            GeboorteDatum = new DateTime(2025, 5, 6, 1, 37, 42, 40, DateTimeKind.Local).AddTicks(3291),
+                            Naam = "Quis dignissimos voluptatem est pariatur et deleniti inventore cum aspernatur suscipit eum eos rerum error aut ullam sint animi consequatur.",
                             OpleidingId = 20,
                             StudentenkaartId = 20
                         });
@@ -520,82 +523,82 @@ namespace SimpleSchool.Data.Migrations
                         new
                         {
                             Id = 11,
-                            BeschikbarePlaatsen = 359,
-                            Beschrijving = "Doloremque facilis rem rerum temporibus provident quis id quo doloremque occaecati quasi quae ut debitis officiis similique ex aliquid omnis.",
-                            Duur = 3,
-                            Naam = "Doloremque sed earum illo quibusdam deserunt est mollitia aut quos iure possimus ducimus est facere voluptatibus omnis magnam aliquam aut."
+                            BeschikbarePlaatsen = 244,
+                            Beschrijving = "Autem ipsa earum et autem in earum labore quas modi tempora est unde et vero dicta qui aut non quo.",
+                            Duur = 4,
+                            Naam = "Sapiente quo et quia incidunt aut culpa molestias ut modi error blanditiis quibusdam iusto odio ut est aut est porro."
                         },
                         new
                         {
                             Id = 12,
-                            BeschikbarePlaatsen = 397,
-                            Beschrijving = "Sit nihil excepturi explicabo quia amet repellendus cum neque iure id eius possimus eveniet quos est enim veritatis quo odio.",
+                            BeschikbarePlaatsen = 238,
+                            Beschrijving = "Blanditiis rerum soluta sit eos molestias ut adipisci qui enim ut aperiam impedit eligendi quisquam accusantium quia velit nostrum odit.",
                             Duur = 4,
-                            Naam = "Est velit at eaque quia modi sit beatae accusantium quasi occaecati voluptatem temporibus in ratione nesciunt qui aut sed occaecati."
+                            Naam = "Dolorem error quasi saepe hic totam natus dignissimos animi consequatur sed qui soluta magnam similique facere quis ratione aut quia."
                         },
                         new
                         {
                             Id = 13,
-                            BeschikbarePlaatsen = 256,
-                            Beschrijving = "Libero explicabo non sunt vel aspernatur et in aliquid asperiores a eaque repellat sed magni et et dolor incidunt sequi.",
+                            BeschikbarePlaatsen = 339,
+                            Beschrijving = "Facilis modi deleniti debitis esse consequatur et doloribus aliquid nesciunt velit veniam perferendis quidem debitis saepe quas harum rerum dolorem.",
                             Duur = 4,
-                            Naam = "Sunt dolorem sapiente similique repellat voluptas nobis explicabo natus qui voluptatem eum natus velit dolorem omnis porro eos ipsum est."
+                            Naam = "Sed quas saepe in eligendi rerum sequi ut qui et sed laborum non unde aut odit ad illo odit nulla."
                         },
                         new
                         {
                             Id = 14,
-                            BeschikbarePlaatsen = 346,
-                            Beschrijving = "Et impedit consectetur quas repudiandae voluptas provident excepturi est occaecati tempore et quam illum reiciendis nihil et magnam similique veniam.",
-                            Duur = 3,
-                            Naam = "Sed neque nesciunt nostrum et voluptas fugit ea et aut earum at fugiat inventore et iure eligendi id excepturi tempore."
+                            BeschikbarePlaatsen = 390,
+                            Beschrijving = "Ab consequuntur fuga et sequi cumque quae aut consequatur perferendis dicta similique aliquam consequuntur ad voluptas minima aliquam rerum harum.",
+                            Duur = 4,
+                            Naam = "Dignissimos ipsa sed dolorem dolorem et dolor error quod quod assumenda unde odio nihil magnam et quis laboriosam ut iure."
                         },
                         new
                         {
                             Id = 15,
-                            BeschikbarePlaatsen = 342,
-                            Beschrijving = "Odit illo dignissimos repudiandae molestiae aut asperiores sunt rem hic a enim qui voluptas iusto fugiat quas enim amet odit.",
+                            BeschikbarePlaatsen = 330,
+                            Beschrijving = "Soluta occaecati quia eum unde saepe recusandae autem quia et consequatur impedit quo ut aut cumque enim quo non similique.",
                             Duur = 3,
-                            Naam = "Saepe eum in sit autem velit aut consectetur nostrum et qui ut facere vero debitis quisquam fuga adipisci nobis perferendis."
+                            Naam = "Ut saepe sit sit labore accusamus sunt natus est consequatur maxime aspernatur ipsam impedit iusto expedita dolorem est et sed."
                         },
                         new
                         {
                             Id = 16,
-                            BeschikbarePlaatsen = 312,
-                            Beschrijving = "Ut corrupti vel quia aliquid enim adipisci et quam ut aut quos qui unde qui quibusdam labore cum autem maxime.",
+                            BeschikbarePlaatsen = 361,
+                            Beschrijving = "Dignissimos sit ipsa inventore eius velit eos non id quae cumque quae distinctio earum quam modi nam ut accusantium est.",
                             Duur = 4,
-                            Naam = "Cumque nam a quos accusamus laboriosam similique et laboriosam in magnam est dolorum voluptatum ut corporis maiores quos assumenda dolore."
+                            Naam = "Sunt qui placeat ullam natus qui rerum voluptas earum dolor laborum aspernatur et sapiente non praesentium id quasi provident in."
                         },
                         new
                         {
                             Id = 17,
-                            BeschikbarePlaatsen = 206,
-                            Beschrijving = "Tempore ducimus sint odio velit sunt quibusdam aut magnam perferendis dolor nulla aliquam dolore distinctio doloribus suscipit eos esse consequuntur.",
+                            BeschikbarePlaatsen = 390,
+                            Beschrijving = "Rem facere similique enim sed error in ut sapiente modi amet vero facere vel laborum est tempore et animi et.",
                             Duur = 4,
-                            Naam = "Optio quaerat ad quidem quia repudiandae nulla reprehenderit omnis excepturi aut voluptatem ullam voluptates vel consequuntur molestiae iusto quis rerum."
+                            Naam = "Cum fuga qui iusto iste vel odit et consequatur at ut aperiam molestiae facere repudiandae autem ratione optio aliquid aperiam."
                         },
                         new
                         {
                             Id = 18,
-                            BeschikbarePlaatsen = 283,
-                            Beschrijving = "Est molestiae sint qui doloremque quidem et eligendi sed incidunt eos quia optio et fugit dolores et inventore error deleniti.",
+                            BeschikbarePlaatsen = 353,
+                            Beschrijving = "Quo id facere sit vero facere et placeat temporibus saepe et aperiam et unde beatae quis officiis dignissimos ut dolor.",
                             Duur = 3,
-                            Naam = "Voluptates sunt sapiente porro dolor corrupti et vero tempora soluta et totam voluptates dolor delectus qui sint est vel possimus."
+                            Naam = "Cumque tempore est voluptas rerum blanditiis error temporibus sed molestiae accusamus ut officia in excepturi alias sapiente perspiciatis beatae distinctio."
                         },
                         new
                         {
                             Id = 19,
-                            BeschikbarePlaatsen = 256,
-                            Beschrijving = "Quo ipsam assumenda quod sit consectetur odio amet voluptatem voluptas animi incidunt sint dolor debitis maxime consequuntur sunt neque harum.",
-                            Duur = 3,
-                            Naam = "Odio soluta explicabo accusamus qui dolores sint quos minima et dolorum vel aliquam consectetur cupiditate est velit unde porro sequi."
+                            BeschikbarePlaatsen = 346,
+                            Beschrijving = "Rerum quisquam quia asperiores est culpa vel quia vitae fugiat temporibus sit qui illum eveniet consequatur consectetur mollitia quis quia.",
+                            Duur = 4,
+                            Naam = "Est voluptas molestiae odit vel hic tempora perferendis non consequuntur quia quia incidunt voluptates est sed magni dicta fugiat fuga."
                         },
                         new
                         {
                             Id = 20,
-                            BeschikbarePlaatsen = 302,
-                            Beschrijving = "Voluptate deserunt quis eos et ex deserunt nemo nulla earum optio suscipit dignissimos laborum doloribus aut est dolorum ducimus reiciendis.",
-                            Duur = 3,
-                            Naam = "Beatae accusamus sed eligendi et ullam id et sed consequatur consequatur error voluptates quis a deleniti voluptate ut tempore voluptatem."
+                            BeschikbarePlaatsen = 342,
+                            Beschrijving = "Doloribus et accusamus quae vel excepturi ducimus suscipit voluptatem incidunt consequuntur eveniet voluptatem et ut voluptates facere nam est at.",
+                            Duur = 4,
+                            Naam = "Voluptatem consequatur quisquam sed asperiores eius accusantium eaque vel quod qui neque dicta maxime dolor delectus doloribus rerum assumenda eligendi."
                         });
                 });
 
@@ -627,72 +630,72 @@ namespace SimpleSchool.Data.Migrations
                         new
                         {
                             Id = 11,
-                            Klas = "quam",
-                            Naam = "Suzanne Howell PhD",
-                            School = "Wilkinson - Anderson"
+                            Klas = "quasi",
+                            Naam = "Vernon Parisian II",
+                            School = "Ondricka LLC"
                         },
                         new
                         {
                             Id = 12,
-                            Klas = "quas",
-                            Naam = "Shelley Lindgren DDS",
-                            School = "Abshire Group"
+                            Klas = "inventore",
+                            Naam = "Ms. Jonathon Berge",
+                            School = "Bruen, Heaney and Bruen"
                         },
                         new
                         {
                             Id = 13,
-                            Klas = "accusantium",
-                            Naam = "Mrs. Silvia Cremin",
-                            School = "Grimes LLC"
+                            Klas = "deleniti",
+                            Naam = "Ms. Peggy Morissette",
+                            School = "Wunsch - Crona"
                         },
                         new
                         {
                             Id = 14,
-                            Klas = "cupiditate",
-                            Naam = "Nora Lubowitz DDS",
-                            School = "Erdman, Wilderman and Gleason"
+                            Klas = "qui",
+                            Naam = "Marcia Price PhD",
+                            School = "Schmidt, White and Reilly"
                         },
                         new
                         {
                             Id = 15,
-                            Klas = "odio",
-                            Naam = "Dr. Wilbur Hagenes",
-                            School = "Hickle, Hilll and Wyman"
+                            Klas = "et",
+                            Naam = "Hope McKenzie III",
+                            School = "Schroeder - McLaughlin"
                         },
                         new
                         {
                             Id = 16,
                             Klas = "quo",
-                            Naam = "Marion Parisian MD",
-                            School = "Yundt and Sons"
+                            Naam = "Stacy Johns DVM",
+                            School = "Reichel and Sons"
                         },
                         new
                         {
                             Id = 17,
-                            Klas = "fugit",
-                            Naam = "Dr. Natalie Koss",
-                            School = "Lynch - Feeney"
+                            Klas = "aut",
+                            Naam = "Kristine Ward IV",
+                            School = "Casper Group"
                         },
                         new
                         {
                             Id = 18,
-                            Klas = "harum",
-                            Naam = "Dr. Arturo Von",
-                            School = "Simonis - Barrows"
+                            Klas = "eos",
+                            Naam = "Miss Ora Wyman",
+                            School = "Mertz, Willms and Rolfson"
                         },
                         new
                         {
                             Id = 19,
-                            Klas = "rerum",
-                            Naam = "Mrs. Essie Botsford",
-                            School = "Davis Group"
+                            Klas = "tenetur",
+                            Naam = "Mr. Georgia Bailey",
+                            School = "Kessler, White and Christiansen"
                         },
                         new
                         {
                             Id = 20,
-                            Klas = "cupiditate",
-                            Naam = "Martha Bahringer DVM",
-                            School = "Reynolds - Beahan"
+                            Klas = "veniam",
+                            Naam = "Ms. William Kub",
+                            School = "Raynor LLC"
                         });
                 });
 
@@ -731,91 +734,91 @@ namespace SimpleSchool.Data.Migrations
                         new
                         {
                             Id = 11,
-                            AantalStudiePunten = 22,
+                            AantalStudiePunten = 29,
                             LeerkrachtId = 0,
-                            Naam = "Rex Kutch MD",
-                            Taal = "content",
+                            Naam = "Dr. Tami Auer",
+                            Taal = "project",
                             Vaktype = 1
                         },
                         new
                         {
                             Id = 12,
-                            AantalStudiePunten = 42,
+                            AantalStudiePunten = 29,
                             LeerkrachtId = 0,
-                            Naam = "Ms. Henrietta Jacobi",
-                            Taal = "generating",
+                            Naam = "Ms. Jeffery Hartmann",
+                            Taal = "Plastic",
                             Vaktype = 0
                         },
                         new
                         {
                             Id = 13,
-                            AantalStudiePunten = 35,
+                            AantalStudiePunten = 34,
                             LeerkrachtId = 0,
-                            Naam = "Amos Robel Jr.",
-                            Taal = "Jewelery",
-                            Vaktype = 0
+                            Naam = "Mr. Cameron Cormier",
+                            Taal = "Consultant",
+                            Vaktype = 1
                         },
                         new
                         {
                             Id = 14,
-                            AantalStudiePunten = 12,
+                            AantalStudiePunten = 27,
                             LeerkrachtId = 0,
-                            Naam = "Ronnie Rohan Sr.",
-                            Taal = "Unbranded",
+                            Naam = "Sandra Hettinger MD",
+                            Taal = "applications",
                             Vaktype = 0
                         },
                         new
                         {
                             Id = 15,
-                            AantalStudiePunten = 24,
+                            AantalStudiePunten = 20,
                             LeerkrachtId = 0,
-                            Naam = "Mrs. Laurie Jerde",
-                            Taal = "Unbranded",
-                            Vaktype = 0
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AantalStudiePunten = 38,
-                            LeerkrachtId = 0,
-                            Naam = "Mr. Arlene Gorczany",
-                            Taal = "Checking Account",
+                            Naam = "Ollie Steuber MD",
+                            Taal = "connecting",
                             Vaktype = 1
                         },
                         new
                         {
-                            Id = 17,
-                            AantalStudiePunten = 25,
+                            Id = 16,
+                            AantalStudiePunten = 15,
                             LeerkrachtId = 0,
-                            Naam = "Donnie Kuhn DVM",
+                            Naam = "Benjamin Schmitt III",
                             Taal = "invoice",
                             Vaktype = 1
                         },
                         new
                         {
-                            Id = 18,
-                            AantalStudiePunten = 44,
+                            Id = 17,
+                            AantalStudiePunten = 13,
                             LeerkrachtId = 0,
-                            Naam = "Mrs. Donald Quigley",
-                            Taal = "Programmable",
-                            Vaktype = 1
+                            Naam = "Mrs. Lance Hyatt",
+                            Taal = "Oklahoma",
+                            Vaktype = 0
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AantalStudiePunten = 42,
+                            LeerkrachtId = 0,
+                            Naam = "Ms. Jodi Streich",
+                            Taal = "Ergonomic",
+                            Vaktype = 0
                         },
                         new
                         {
                             Id = 19,
-                            AantalStudiePunten = 13,
+                            AantalStudiePunten = 25,
                             LeerkrachtId = 0,
-                            Naam = "Eileen Rippin II",
-                            Taal = "generating",
-                            Vaktype = 0
+                            Naam = "Micheal O'Keefe Jr.",
+                            Taal = "leading edge",
+                            Vaktype = 1
                         },
                         new
                         {
                             Id = 20,
                             AantalStudiePunten = 31,
                             LeerkrachtId = 0,
-                            Naam = "Dr. Carroll Larkin",
-                            Taal = "Senior",
+                            Naam = "Luke Ziemann Jr.",
+                            Taal = "Direct",
                             Vaktype = 0
                         });
                 });
