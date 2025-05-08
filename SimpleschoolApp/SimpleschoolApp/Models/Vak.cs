@@ -7,6 +7,9 @@
         public string Taal { get; set; }
         public int AantalStudiePunten { get; set; }
         public Type Type { get; set; }
+        public int LeerkrachtId { get; set; }
+        public Leerkracht Leerkracht { get; set; }
+        public List<Opleiding> Opleidingen { get; set; }
 
     }
     public enum Type
