@@ -8,7 +8,6 @@
         public int BeschikbarePlaatsen { get; set; }
         public string Beschrijving { get; set; }
         public List<Vak> Vakken { get; set; }
-        public int LeerlingId { get; set; }
-        public Leerling Leerling { get; set; }
+        public List<Leerling> Leerlingen { get; set; }
     }
 }
