@@ -8,6 +8,8 @@
         public int AantalStudiePunten { get; set; }
         public Type Type { get; set; }
 
+        public List<Leerkracht> Leerkrachten { get; set; }
+        public List<Opleiding> Opleidingen { get; set; }
     }
     public enum Type
     {

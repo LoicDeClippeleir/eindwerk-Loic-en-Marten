@@ -8,5 +8,6 @@ namespace SimpleschoolApp.Models
         public string Naam { get; set; }
         public string Klas { get; set; }
         public string  School { get; set; }
+        public Leerling Leerling { get; set; }
     }
 }
