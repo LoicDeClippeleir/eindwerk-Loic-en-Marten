@@ -5,7 +5,7 @@ namespace SimpleSchool.Fakers
 {
     public class OpleidingFaker
     {
-        public static readonly Faker<Opleiding>("nl") Faker = new Faker<Opleiding>()
+        public static readonly Faker<Opleiding> Faker = new Faker<Opleiding>("nl")
            .RuleFor(l => l.Id, f => f.IndexFaker + 1)
            .RuleFor(l => l.Naam, f => f.Lorem.Sentence(20))
            .RuleFor(l => l.Duur, f => f.Random.Number(3,4))
