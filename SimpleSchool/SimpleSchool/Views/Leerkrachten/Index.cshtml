@@ -33,10 +33,11 @@
                 <td>
                     <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <button type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</button>
-                    <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <button type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 <button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
