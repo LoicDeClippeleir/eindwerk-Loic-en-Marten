@@ -1,8 +1,61 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="jumbotron bg-light p-4 rounded shadow-sm">
+        <h1 class="display-4">Welkom bij de SchoolApp!</h1>
+        <p class="lead">Bekijk hier jouw lessen, leerkrachten en belangrijke meldingen.</p>
+        <hr class="my-4" />
+        <p>Gebruik de navigatie hieronder om verder te gaan naar andere onderdelen van de app.</p>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+            <a href="/Leerkrachten" class="btn btn-primary">Leerkrachten</a>
+            <a href="/Vakken" class="btn btn-secondary">Lessen</a>
+            <a href="/Opleidingen" class="btn btn-success">Opleidingen</a>
+            <a href="/StudentenKaart" class="btn btn-info">Studentenkaart</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <!-- Berichten -->
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    Laatste Berichten
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Les Frans verplaatst naar donderdag.</li>
+                        <li class="list-group-item">Nieuwe cursus beschikbaar: Programmeren 2</li>
+                        <li class="list-group-item">Leraar mevrouw Janssen is afwezig op 14 mei.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meldingen -->
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-warning text-dark">
+                    Meldingen
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Je inschrijving voor Opleiding Informatica is bevestigd.</li>
+                        <li class="list-group-item">Nieuwe lesroosters zijn beschikbaar.</li>
+                        <li class="list-group-item">Update: Studentenkaart vernieuwd per 1 juni.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
