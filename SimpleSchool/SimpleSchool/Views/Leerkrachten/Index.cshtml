@@ -31,7 +31,7 @@
                 <td>@Html.DisplayFor(modelItem => item.EMail)</td>
                 <td>@Html.DisplayFor(modelItem => item.Adres)</td>
                 <td>
-                    <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <button type="button" class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
                     <button type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</button>
                     <button type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</button>
                 </td>
@@ -41,3 +41,4 @@
 </table>
 <button type="button" class="btn btn-danger">Danger</button>
 <button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-success">Success</button>
