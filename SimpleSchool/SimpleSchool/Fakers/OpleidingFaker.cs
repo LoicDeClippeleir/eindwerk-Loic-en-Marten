@@ -1,5 +1,6 @@
 ﻿using Bogus;
-using SimpleschoolApp.Models;
+using Simpleschool.Models;
+
 
 namespace SimpleSchool.Fakers
 {

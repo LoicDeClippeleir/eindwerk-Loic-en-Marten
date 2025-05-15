@@ -1,4 +1,4 @@
-﻿namespace SimpleschoolApp.Models
+﻿namespace Simpleschool.Models
 {
     public class Vak
     {

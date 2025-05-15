@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Simpleschool.Models;
 using SimpleSchool.Fakers;
-using SimpleschoolApp.Models;
+
 
 namespace SimpleSchool.Seeders
 {
