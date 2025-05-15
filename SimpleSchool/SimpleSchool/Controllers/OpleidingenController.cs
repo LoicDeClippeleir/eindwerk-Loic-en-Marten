@@ -22,7 +22,7 @@ namespace SimpleSchool.Controllers
         // GET: Opleidingen
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Opleiding.ToListAsync());
+            return View(await _context.Opleidingen.ToListAsync());
         }
 
         // GET: Opleidingen/Details/5
@@ -33,7 +33,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleiding
+            var opleiding = await _context.Opleidingen
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (opleiding == null)
             {
@@ -73,7 +73,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleiding.FindAsync(id);
+            var opleiding = await _context.Opleidingen.FindAsync(id);
             if (opleiding == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleiding
+            var opleiding = await _context.Opleidingen
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (opleiding == null)
             {
@@ -139,10 +139,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var opleiding = await _context.Opleiding.FindAsync(id);
+            var opleiding = await _context.Opleidingen.FindAsync(id);
             if (opleiding != null)
             {
-                _context.Opleiding.Remove(opleiding);
+                _context.Opleidingen.Remove(opleiding);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace SimpleSchool.Controllers
 
         private bool OpleidingExists(int id)
         {
-            return _context.Opleiding.Any(e => e.Id == id);
+            return _context.Opleidingen.Any(e => e.Id == id);
         }
     }
 }

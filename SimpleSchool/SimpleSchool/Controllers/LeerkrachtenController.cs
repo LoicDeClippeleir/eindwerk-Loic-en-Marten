@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
+using SimpleSchool.Viewmodels;
 using SimpleschoolApp.Models;
 
 namespace SimpleSchool.Controllers
@@ -22,7 +23,7 @@ namespace SimpleSchool.Controllers
         // GET: Leerkrachten
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Leerkracht.ToListAsync());
+            return View(await _context.Leerkrachten.ToListAsync());
         }
 
         // GET: Leerkrachten/Details/5
@@ -33,7 +34,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkracht
+            var leerkracht = await _context.Leerkrachten
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leerkracht == null)
             {
@@ -54,14 +55,25 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] Leerkracht leerkracht)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtCreateViewModel leerkracht)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(leerkracht);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Bekijk de fouten in ModelState
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                return View(leerkracht); // Toon het formulier opnieuw met validatiefouten
             }
+            // Map het model naar de database-entiteit en sla op
+            var leerkrachtViewmodel = new Leerkracht
+            {
+                Naam = leerkracht.Naam,
+                GeboorteDatum = leerkracht.GeboorteDatum,
+                EMail = leerkracht.EMail,
+                Adres = leerkracht.Adres,
+                Vakken = leerkracht.VakkenIds.Select(id => new Vak { Id = id }).ToList()
+            };
+            _context.Leerkrachten.Add(leerkrachtViewmodel);
+            _context.SaveChanges();
             return View(leerkracht);
         }
 
@@ -73,7 +85,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkracht.FindAsync(id);
+            var leerkracht = await _context.Leerkrachten.FindAsync(id);
             if (leerkracht == null)
             {
                 return NotFound();
@@ -124,7 +136,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkracht
+            var leerkracht = await _context.Leerkrachten
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leerkracht == null)
             {
@@ -139,10 +151,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leerkracht = await _context.Leerkracht.FindAsync(id);
+            var leerkracht = await _context.Leerkrachten.FindAsync(id);
             if (leerkracht != null)
             {
-                _context.Leerkracht.Remove(leerkracht);
+                _context.Leerkrachten.Remove(leerkracht);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +163,7 @@ namespace SimpleSchool.Controllers
 
         private bool LeerkrachtExists(int id)
         {
-            return _context.Leerkracht.Any(e => e.Id == id);
+            return _context.Leerkrachten.Any(e => e.Id == id);
         }
     }
 }

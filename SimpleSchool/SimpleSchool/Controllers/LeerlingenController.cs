@@ -22,7 +22,7 @@ namespace SimpleSchool.Controllers
         // GET: Leerlingen
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Leerling.Include(l => l.Opleiding).Include(l => l.Studentenkaart);
+            var applicationDbContext = _context.Leerlingen.Include(l => l.Opleiding).Include(l => l.Studentenkaart);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerling
+            var leerling = await _context.Leerlingen
                 .Include(l => l.Opleiding)
                 .Include(l => l.Studentenkaart)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -80,7 +80,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerling.FindAsync(id);
+            var leerling = await _context.Leerlingen.FindAsync(id);
             if (leerling == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerling
+            var leerling = await _context.Leerlingen
                 .Include(l => l.Opleiding)
                 .Include(l => l.Studentenkaart)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -152,10 +152,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leerling = await _context.Leerling.FindAsync(id);
+            var leerling = await _context.Leerlingen.FindAsync(id);
             if (leerling != null)
             {
-                _context.Leerling.Remove(leerling);
+                _context.Leerlingen.Remove(leerling);
             }
 
             await _context.SaveChangesAsync();
@@ -164,7 +164,7 @@ namespace SimpleSchool.Controllers
 
         private bool LeerlingExists(int id)
         {
-            return _context.Leerling.Any(e => e.Id == id);
+            return _context.Leerlingen.Any(e => e.Id == id);
         }
     }
 }

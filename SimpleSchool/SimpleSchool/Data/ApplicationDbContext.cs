@@ -21,10 +21,10 @@ namespace SimpleSchool.Data
             builder.Entity<Opleiding>().HasMany(l=> l.Vakken).WithMany(k=> k.Opleidingen).UsingEntity(j => j.ToTable("Opleidingsvakken"));
             base.OnModelCreating(builder);
         }
-        public DbSet<SimpleschoolApp.Models.Leerkracht> Leerkracht { get; set; } = default!;
-        public DbSet<SimpleschoolApp.Models.Leerling> Leerling { get; set; } = default!;
-        public DbSet<SimpleschoolApp.Models.Opleiding> Opleiding { get; set; } = default!;
-        public DbSet<SimpleschoolApp.Models.StudentenKaart> StudentenKaart { get; set; } = default!;
-        public DbSet<SimpleschoolApp.Models.Vak> Vak { get; set; } = default!;
+        public DbSet<SimpleschoolApp.Models.Leerkracht> Leerkrachten { get; set; } = default!;
+        public DbSet<SimpleschoolApp.Models.Leerling> Leerlingen { get; set; } = default!;
+        public DbSet<SimpleschoolApp.Models.Opleiding> Opleidingen { get; set; } = default!;
+        public DbSet<SimpleschoolApp.Models.StudentenKaart> StudentenKaarten { get; set; } = default!;
+        public DbSet<SimpleschoolApp.Models.Vak> Vakken { get; set; } = default!;
     }
 }

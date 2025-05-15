@@ -22,7 +22,7 @@ namespace SimpleSchool.Controllers
         // GET: Vakken
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Vak.Include(v => v.Leerkracht);
+            var applicationDbContext = _context.Vakken.Include(v => v.Leerkracht);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var vak = await _context.Vak
+            var vak = await _context.Vakken
                 .Include(v => v.Leerkracht)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vak == null)
@@ -48,7 +48,7 @@ namespace SimpleSchool.Controllers
         // GET: Vakken/Create
         public IActionResult Create()
         {
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkrachten, "Id", "Id");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace SimpleSchool.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkrachten, "Id", "Id", vak.LeerkrachtId);
             return View(vak);
         }
 
@@ -77,12 +77,12 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var vak = await _context.Vak.FindAsync(id);
+            var vak = await _context.Vakken.FindAsync(id);
             if (vak == null)
             {
                 return NotFound();
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkrachten, "Id", "Id", vak.LeerkrachtId);
             return View(vak);
         }
 
@@ -118,7 +118,7 @@ namespace SimpleSchool.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkrachten, "Id", "Id", vak.LeerkrachtId);
             return View(vak);
         }
 
@@ -130,7 +130,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var vak = await _context.Vak
+            var vak = await _context.Vakken
                 .Include(v => v.Leerkracht)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vak == null)
@@ -146,10 +146,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vak = await _context.Vak.FindAsync(id);
+            var vak = await _context.Vakken.FindAsync(id);
             if (vak != null)
             {
-                _context.Vak.Remove(vak);
+                _context.Vakken.Remove(vak);
             }
 
             await _context.SaveChangesAsync();
@@ -158,7 +158,7 @@ namespace SimpleSchool.Controllers
 
         private bool VakExists(int id)
         {
-            return _context.Vak.Any(e => e.Id == id);
+            return _context.Vakken.Any(e => e.Id == id);
         }
     }
 }
