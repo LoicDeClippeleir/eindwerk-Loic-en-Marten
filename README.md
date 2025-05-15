@@ -34,3 +34,23 @@
             builder.Entity<Leerling>().HasOne(l=> l.Opleiding).WithMany(k=> k.Leerlingen).HasForeignKey(l => l.OpleidingId);
             builder.Entity<Opleiding>().HasMany(l=> l.Vakken).WithMany(k=> k.Opleidingen).UsingEntity(j => j.ToTable("Opleidingsvakken"));
             base.OnModelCreating(builder);
+
+
+
+Rolseeder
+            using Bogus.DataSets;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace SimpleSchool.Seeders
+{
+    public class RolSeeder : ISeeder
+    {
+        public void Seed(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole>().HasData( new IdentityRole { Name = "Leerling", NormalizedName = "LEERLING" }, 
+                                                         new IdentityRole { Name = "Leerkracht", NormalizedName = "LEERKRACHT"},
+                                                         new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
+        }
+    }
+}

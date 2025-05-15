@@ -1,0 +1,52 @@
+﻿@model Simpleschool.Models.Vak
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Vak</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taal" class="control-label"></label>
+                <input asp-for="Taal" class="form-control" />
+                <span asp-validation-for="Taal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AantalStudiePunten" class="control-label"></label>
+                <input asp-for="AantalStudiePunten" class="form-control" />
+                <span asp-validation-for="AantalStudiePunten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vaktype" class="control-label"></label>
+                <select asp-for="Vaktype" class="form-control"></select>
+                <span asp-validation-for="Vaktype" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeerkrachtId" class="control-label"></label>
+                <select asp-for="LeerkrachtId" class ="form-control" asp-items="ViewBag.LeerkrachtId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
