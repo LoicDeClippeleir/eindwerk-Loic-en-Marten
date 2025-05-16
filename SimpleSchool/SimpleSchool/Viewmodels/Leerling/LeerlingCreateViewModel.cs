@@ -7,7 +7,7 @@ namespace SimpleSchool.Viewmodels.Leerling
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Naam is verplicht.")]
-        public string   Naam { get; set; }
+        public string Naam { get; set; }
         [Required(ErrorMessage = "Geboortedatum is verplicht.")]
         public DateTime GeboorteDatum { get; set; }
         [Required(ErrorMessage = "E-mailadres is verplicht.")]
