@@ -12,9 +12,9 @@ namespace SimpleSchool.Controllers
 {
     public class StudentenKaartenController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SimpleSchoolContext _context;
 
-        public StudentenKaartenController(ApplicationDbContext context)
+        public StudentenKaartenController(SimpleSchoolContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace SimpleSchool.Controllers
         // GET: StudentenKaarten
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StudentenKaarten.ToListAsync());
+            return View(await _context.StudentenKaart.ToListAsync());
         }
 
         // GET: StudentenKaarten/Details/5
@@ -33,7 +33,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var studentenKaart = await _context.StudentenKaarten
+            var studentenKaart = await _context.StudentenKaart
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (studentenKaart == null)
             {
@@ -73,7 +73,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var studentenKaart = await _context.StudentenKaarten.FindAsync(id);
+            var studentenKaart = await _context.StudentenKaart.FindAsync(id);
             if (studentenKaart == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var studentenKaart = await _context.StudentenKaarten
+            var studentenKaart = await _context.StudentenKaart
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (studentenKaart == null)
             {
@@ -139,10 +139,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var studentenKaart = await _context.StudentenKaarten.FindAsync(id);
+            var studentenKaart = await _context.StudentenKaart.FindAsync(id);
             if (studentenKaart != null)
             {
-                _context.StudentenKaarten.Remove(studentenKaart);
+                _context.StudentenKaart.Remove(studentenKaart);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace SimpleSchool.Controllers
 
         private bool StudentenKaartExists(int id)
         {
-            return _context.StudentenKaarten.Any(e => e.Id == id);
+            return _context.StudentenKaart.Any(e => e.Id == id);
         }
     }
 }

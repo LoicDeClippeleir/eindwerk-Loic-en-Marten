@@ -12,20 +12,20 @@ namespace SimpleSchool.Controllers
 {
     public class LeerkrachtenController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SimpleSchoolContext _context;
 
-        public LeerkrachtenController(ApplicationDbContext context)
+        public LeerkrachtenController(SimpleSchoolContext context)
         {
             _context = context;
         }
 
-        // GET: Leerkrachten
+        // GET: Leerkrachts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Leerkrachten.ToListAsync());
+            return View(await _context.Leerkracht.ToListAsync());
         }
 
-        // GET: Leerkrachten/Details/5
+        // GET: Leerkrachts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,7 +33,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkrachten
+            var leerkracht = await _context.Leerkracht
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leerkracht == null)
             {
@@ -43,13 +43,13 @@ namespace SimpleSchool.Controllers
             return View(leerkracht);
         }
 
-        // GET: Leerkrachten/Create
+        // GET: Leerkrachts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Leerkrachten/Create
+        // POST: Leerkrachts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace SimpleSchool.Controllers
             return View(leerkracht);
         }
 
-        // GET: Leerkrachten/Edit/5
+        // GET: Leerkrachts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkrachten.FindAsync(id);
+            var leerkracht = await _context.Leerkracht.FindAsync(id);
             if (leerkracht == null)
             {
                 return NotFound();
@@ -81,7 +81,7 @@ namespace SimpleSchool.Controllers
             return View(leerkracht);
         }
 
-        // POST: Leerkrachten/Edit/5
+        // POST: Leerkrachts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace SimpleSchool.Controllers
             return View(leerkracht);
         }
 
-        // GET: Leerkrachten/Delete/5
+        // GET: Leerkrachts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,7 +124,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkrachten
+            var leerkracht = await _context.Leerkracht
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leerkracht == null)
             {
@@ -134,15 +134,15 @@ namespace SimpleSchool.Controllers
             return View(leerkracht);
         }
 
-        // POST: Leerkrachten/Delete/5
+        // POST: Leerkrachts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leerkracht = await _context.Leerkrachten.FindAsync(id);
+            var leerkracht = await _context.Leerkracht.FindAsync(id);
             if (leerkracht != null)
             {
-                _context.Leerkrachten.Remove(leerkracht);
+                _context.Leerkracht.Remove(leerkracht);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace SimpleSchool.Controllers
 
         private bool LeerkrachtExists(int id)
         {
-            return _context.Leerkrachten.Any(e => e.Id == id);
+            return _context.Leerkracht.Any(e => e.Id == id);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace SimpleSchool.Controllers
 {
     public class LeerlingenController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SimpleSchoolContext _context;
 
-        public LeerlingenController(ApplicationDbContext context)
+        public LeerlingenController(SimpleSchoolContext context)
         {
             _context = context;
         }
@@ -22,8 +22,8 @@ namespace SimpleSchool.Controllers
         // GET: Leerlingen
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Leerlingen.Include(l => l.Opleiding).Include(l => l.Studentenkaart);
-            return View(await applicationDbContext.ToListAsync());
+            var simpleSchoolContext = _context.Leerling.Include(l => l.Opleiding).Include(l => l.Studentenkaart);
+            return View(await simpleSchoolContext.ToListAsync());
         }
 
         // GET: Leerlingen/Details/5
@@ -34,7 +34,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerlingen
+            var leerling = await _context.Leerling
                 .Include(l => l.Opleiding)
                 .Include(l => l.Studentenkaart)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -49,8 +49,8 @@ namespace SimpleSchool.Controllers
         // GET: Leerlingen/Create
         public IActionResult Create()
         {
-            ViewData["OpleidingId"] = new SelectList(_context.Opleidingen, "Id", "Id");
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaarten, "Id", "Id");
+            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id");
+            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace SimpleSchool.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleidingen, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaarten, "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
@@ -80,13 +80,13 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerlingen.FindAsync(id);
+            var leerling = await _context.Leerling.FindAsync(id);
             if (leerling == null)
             {
                 return NotFound();
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleidingen, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaarten, "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
@@ -122,8 +122,8 @@ namespace SimpleSchool.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleidingen, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaarten, "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
@@ -135,7 +135,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerlingen
+            var leerling = await _context.Leerling
                 .Include(l => l.Opleiding)
                 .Include(l => l.Studentenkaart)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -152,10 +152,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leerling = await _context.Leerlingen.FindAsync(id);
+            var leerling = await _context.Leerling.FindAsync(id);
             if (leerling != null)
             {
-                _context.Leerlingen.Remove(leerling);
+                _context.Leerling.Remove(leerling);
             }
 
             await _context.SaveChangesAsync();
@@ -164,7 +164,7 @@ namespace SimpleSchool.Controllers
 
         private bool LeerlingExists(int id)
         {
-            return _context.Leerlingen.Any(e => e.Id == id);
+            return _context.Leerling.Any(e => e.Id == id);
         }
     }
 }

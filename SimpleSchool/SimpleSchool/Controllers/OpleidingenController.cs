@@ -12,9 +12,9 @@ namespace SimpleSchool.Controllers
 {
     public class OpleidingenController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SimpleSchoolContext _context;
 
-        public OpleidingenController(ApplicationDbContext context)
+        public OpleidingenController(SimpleSchoolContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace SimpleSchool.Controllers
         // GET: Opleidingen
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Opleidingen.ToListAsync());
+            return View(await _context.Opleiding.ToListAsync());
         }
 
         // GET: Opleidingen/Details/5
@@ -33,7 +33,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleidingen
+            var opleiding = await _context.Opleiding
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (opleiding == null)
             {
@@ -73,7 +73,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleidingen.FindAsync(id);
+            var opleiding = await _context.Opleiding.FindAsync(id);
             if (opleiding == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var opleiding = await _context.Opleidingen
+            var opleiding = await _context.Opleiding
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (opleiding == null)
             {
@@ -139,10 +139,10 @@ namespace SimpleSchool.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var opleiding = await _context.Opleidingen.FindAsync(id);
+            var opleiding = await _context.Opleiding.FindAsync(id);
             if (opleiding != null)
             {
-                _context.Opleidingen.Remove(opleiding);
+                _context.Opleiding.Remove(opleiding);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace SimpleSchool.Controllers
 
         private bool OpleidingExists(int id)
         {
-            return _context.Opleidingen.Any(e => e.Id == id);
+            return _context.Opleiding.Any(e => e.Id == id);
         }
     }
 }
