@@ -19,7 +19,7 @@ namespace SimpleSchool.Seeders
             List<Leerkracht> leerkrachten = LeerkrachtFaker.Faker.Generate(10);
             for (int i = 0; i < leerkrachten.Count; i++)
             {
-                leerkrachten[i].Id = i + 1; // Ensure IDs are 1, 2, ..., 10
+                leerkrachten[i].Id = i + 1; 
             }
             modelBuilder.Entity<Leerkracht>().HasData(leerkrachten);
         }
