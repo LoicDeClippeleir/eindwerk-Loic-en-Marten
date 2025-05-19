@@ -72,6 +72,8 @@ namespace SimpleSchool.Controllers
                 Adres = leerkrachtViewModel.Adres,
                 Vakken = _context.Vak.Where(v => leerkrachtViewModel.VakkenIds.Contains(v.Id)).ToList()
             };
+            _context.Leerkracht.Add(leerkracht);
+            await _context.SaveChangesAsync();
             return View(leerkracht);
         }
 
