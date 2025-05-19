@@ -7,22 +7,14 @@ namespace SimpleSchool.Seeders
 {
     public class LeerkrachtSeeder : ISeeder
     {
-        /*{
+        
             public void Seed(ModelBuilder modelBuilder)
             {
                 List<Leerkracht> leerkrachten = LeerkrachtFaker.Faker.Generate(10);
                 modelBuilder.Entity<Leerkracht>().HasData(leerkrachten);
             }
-        }*/
-        public void Seed(ModelBuilder modelBuilder)
-        {
-            List<Leerkracht> leerkrachten = LeerkrachtFaker.Faker.Generate(10);
-            for (int i = 0; i < leerkrachten.Count; i++)
-            {
-                leerkrachten[i].Id = i + 1; 
-            }
-            modelBuilder.Entity<Leerkracht>().HasData(leerkrachten);
-        }
+        
+        
     }
 
 }
