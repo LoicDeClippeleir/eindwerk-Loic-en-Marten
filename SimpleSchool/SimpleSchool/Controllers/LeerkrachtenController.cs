@@ -48,6 +48,7 @@ namespace SimpleSchool.Controllers
         // GET: Leerkrachts/Create
         public IActionResult Create()
         {
+            ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam");
             return View(new SimpleSchool.Viewmodels.LeerkrachtCreateViewModel());
         }
 
@@ -57,15 +58,13 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtCreateViewModel leerkrachtViewModel)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres, VakkenIds")] LeerkrachtCreateViewModel leerkrachtViewModel)
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam", leerkrachtViewModel.VakkenIds);// als de model state nie valid is dan moeten we terug de selectlist vullen voor in de index
                 return View(leerkrachtViewModel);
-                TempData["LeerkrachtAangemaakt"] = true;
             }
-            TempData["LeerkrachtAangemaakt"] = true;
-
             var leerkracht = new Leerkracht
             {
                 Naam = leerkrachtViewModel.Naam,
@@ -75,7 +74,9 @@ namespace SimpleSchool.Controllers
                 Vakken = _context.Vak.Where(v => leerkrachtViewModel.VakkenIds.Contains(v.Id)).ToList()
             };
             _context.Leerkracht.Add(leerkracht);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); 
+            
+            TempData["LeerkrachtAangemaakt"] = true;
             return View(leerkracht);
         }
 
