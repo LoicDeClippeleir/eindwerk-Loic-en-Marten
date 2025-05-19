@@ -49,8 +49,8 @@ namespace SimpleSchool.Controllers
         // GET: Leerlingen/Create
         public IActionResult Create()
         {
-            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id");
-            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id");
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id");
+            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace SimpleSchool.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
@@ -85,8 +85,8 @@ namespace SimpleSchool.Controllers
             {
                 return NotFound();
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
@@ -122,8 +122,8 @@ namespace SimpleSchool.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Set<Opleiding>(), "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.Set<StudentenKaart>(), "Id", "Id", leerling.StudentenkaartId);
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
             return View(leerling);
         }
 
