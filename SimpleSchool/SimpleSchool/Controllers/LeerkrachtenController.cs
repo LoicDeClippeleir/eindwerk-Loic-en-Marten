@@ -57,20 +57,20 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtCreateViewModel leerkracht)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtCreateViewModel leerkrachtViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(leerkracht);
+                return View(leerkrachtViewModel);
             }
 
             var leerkracht = new Leerkracht
             {
-                Naam = model.Naam,
-                GeboorteDatum = model.GeboorteDatum,
-                EMail = model.EMail,
-                Adres = model.Adres,
-                Vakken = _context.Vak.Where(v => model.VakkenIds.Contains(v.Id)).ToList()
+                Naam = leerkrachtViewModel.Naam,
+                GeboorteDatum = leerkrachtViewModel.GeboorteDatum,
+                EMail = leerkrachtViewModel.EMail,
+                Adres = leerkrachtViewModel.Adres,
+                Vakken = _context.Vak.Where(v => leerkrachtViewModel.VakkenIds.Contains(v.Id)).ToList()
             };
             return View(leerkracht);
         }
