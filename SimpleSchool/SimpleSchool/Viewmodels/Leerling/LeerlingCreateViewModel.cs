@@ -17,8 +17,8 @@ namespace SimpleSchool.Viewmodels.Leerling
         public string Adres { get; set; }
         
         [Required(ErrorMessage = "Selecteer  een studentenkaart.")]
-        public List<StudentenKaart> StudentenKaartId { get; set; }
+        public int StudentenKaartId { get; set; }
         [Required(ErrorMessage = "Selecteer  een opleiding.")]
-        public List<Opleiding> OpleidingId { get; set; }
+        public int OpleidingId { get; set; }
     }
 }
