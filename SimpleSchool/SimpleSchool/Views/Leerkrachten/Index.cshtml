@@ -4,7 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Leerkracht</h1>
+@if (TempData["LeerkrachtAangemaakt"] != null && (bool)TempData["LeerkrachtAangemaakt"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Leerkracht aangemaakt!
+    </div>
+}
+
 
 <p>
     <a asp-action="Create">Create New</a>
