@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using Simpleschool.Models;
+using SimpleSchool.Viewmodels;
 
 namespace SimpleSchool.Controllers
 {
@@ -46,22 +47,30 @@ namespace SimpleSchool.Controllers
         // GET: Leerkrachts/Create
         public IActionResult Create()
         {
-            return View();
+            return View(new SimpleSchool.Viewmodels.LeerkrachtCreateViewModel());
         }
+
 
         // POST: Leerkrachts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] Leerkracht leerkracht)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtCreateViewModel leerkracht)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(leerkracht);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View(leerkracht);
             }
+
+            var leerkracht = new Leerkracht
+            {
+                Naam = model.Naam,
+                GeboorteDatum = model.GeboorteDatum,
+                EMail = model.EMail,
+                Adres = model.Adres,
+                Vakken = _context.Vak.Where(v => model.VakkenIds.Contains(v.Id)).ToList()
+            };
             return View(leerkracht);
         }
 
