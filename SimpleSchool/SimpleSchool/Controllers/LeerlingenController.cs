@@ -65,7 +65,9 @@ namespace SimpleSchool.Controllers
             {
                 _context.Add(leerling);
                 await _context.SaveChangesAsync();
+                TempData["LeerlingAangemaakt"] = true;
                 return RedirectToAction(nameof(Index));
+                TempData["LeerlingAangemaakt"] = true;
             }
             ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
             ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);

@@ -64,6 +64,7 @@ namespace SimpleSchool.Controllers
                 return View(leerkrachtViewModel);
                 TempData["LeerkrachtAangemaakt"] = true;
             }
+            TempData["LeerkrachtAangemaakt"] = true;
 
             var leerkracht = new Leerkracht
             {
