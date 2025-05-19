@@ -1,4 +1,4 @@
-﻿namespace Simpleschool.Models
+﻿namespace SimpleSchool.Models
 {
     public class Leerling
     {

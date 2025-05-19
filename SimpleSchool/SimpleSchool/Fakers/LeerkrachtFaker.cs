@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using Simpleschool.Models;
+using SimpleSchool.Models;
 
 
 

@@ -1,4 +1,4 @@
-﻿using Simpleschool.Models;
+﻿using SimpleSchool.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace SimpleSchool.Viewmodels.Leerling

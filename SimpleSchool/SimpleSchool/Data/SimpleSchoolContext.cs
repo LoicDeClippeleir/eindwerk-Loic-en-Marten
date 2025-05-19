@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Simpleschool.Models;
+using SimpleSchool.Models;
 using SimpleSchool.Seeders;
 
 namespace SimpleSchool.Data
@@ -26,10 +26,10 @@ namespace SimpleSchool.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Simpleschool.Models.Leerkracht> Leerkracht { get; set; } = default!;
-        public DbSet<Simpleschool.Models.Leerling> Leerling { get; set; } = default!;
-        public DbSet<Simpleschool.Models.Opleiding> Opleiding { get; set; } = default!;
-        public DbSet<Simpleschool.Models.StudentenKaart> StudentenKaart { get; set; } = default!;
-        public DbSet<Simpleschool.Models.Vak> Vak { get; set; } = default!;
+        public DbSet<SimpleSchool.Models.Leerkracht> Leerkracht { get; set; } = default!;
+        public DbSet<SimpleSchool.Models.Leerling> Leerling { get; set; } = default!;
+        public DbSet<SimpleSchool.Models.Opleiding> Opleiding { get; set; } = default!;
+        public DbSet<SimpleSchool.Models.StudentenKaart> StudentenKaart { get; set; } = default!;
+        public DbSet<SimpleSchool.Models.Vak> Vak { get; set; } = default!;
     }
 }
