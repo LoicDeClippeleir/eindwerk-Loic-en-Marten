@@ -60,6 +60,7 @@ namespace SimpleSchool.Controllers
             {
                 _context.Add(opleiding);
                 await _context.SaveChangesAsync();
+                TempData["OpleidingAangemaakt"] = true;
                 return RedirectToAction(nameof(Index));
             }
             return View(opleiding);

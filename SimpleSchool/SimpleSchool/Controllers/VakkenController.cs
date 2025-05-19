@@ -63,6 +63,7 @@ namespace SimpleSchool.Controllers
             {
                 _context.Add(vak);
                 await _context.SaveChangesAsync();
+                TempData["VakAangemaakt"] = true;
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
