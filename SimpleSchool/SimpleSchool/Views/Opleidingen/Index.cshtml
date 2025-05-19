@@ -9,8 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Beschrijving)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a type="button" class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Verwijder</a>
+                    <a type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
         </tr>
 }

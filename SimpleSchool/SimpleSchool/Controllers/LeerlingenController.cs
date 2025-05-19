@@ -69,6 +69,7 @@ namespace SimpleSchool.Controllers
             }
             ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
             ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
+          
             return View(leerling);
         }
 
