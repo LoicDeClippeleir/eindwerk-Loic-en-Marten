@@ -60,6 +60,7 @@ namespace SimpleSchool.Controllers
             {
                 _context.Add(studentenKaart);
                 await _context.SaveChangesAsync();
+                TempData["StudentenKaartAangemaakt"] = true;
                 return RedirectToAction(nameof(Index));
             }
             return View(studentenKaart);
