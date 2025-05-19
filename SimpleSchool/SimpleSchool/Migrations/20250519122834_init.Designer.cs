@@ -12,8 +12,8 @@ using SimpleSchool.Data;
 namespace SimpleSchool.Migrations
 {
     [DbContext(typeof(SimpleSchoolContext))]
-    [Migration("20250519083828_vak opnieuw ")]
-    partial class vakopnieuw
+    [Migration("20250519122834_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace SimpleSchool.Migrations
                     b.ToTable("Opleidingsvakken", (string)null);
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Leerkracht", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Leerkracht", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,87 +70,87 @@ namespace SimpleSchool.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 11,
                             Adres = "Stichtinggracht 79",
                             EMail = "maiores",
-                            GeboorteDatum = new DateTime(2024, 12, 9, 13, 19, 42, 477, DateTimeKind.Local).AddTicks(4559),
+                            GeboorteDatum = new DateTime(2024, 12, 9, 17, 9, 48, 48, DateTimeKind.Local).AddTicks(4083),
                             Naam = "Sunt at sed delectus voluptatibus reprehenderit ut suscipit nesciunt cupiditate recusandae voluptates tenetur sint repellat sed est autem autem laboriosam."
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 12,
                             Adres = "Roosdijk 3",
                             EMail = "suscipit",
-                            GeboorteDatum = new DateTime(2024, 8, 26, 15, 56, 27, 594, DateTimeKind.Local).AddTicks(8552),
+                            GeboorteDatum = new DateTime(2024, 8, 26, 19, 46, 33, 165, DateTimeKind.Local).AddTicks(8239),
                             Naam = "Quis explicabo ea aspernatur non itaque debitis et velit et voluptatem quia assumenda iste in quis est dolore pariatur eos."
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 13,
                             Adres = "Graafvelt 949",
                             EMail = "perspiciatis",
-                            GeboorteDatum = new DateTime(2024, 6, 2, 0, 18, 50, 386, DateTimeKind.Local).AddTicks(132),
+                            GeboorteDatum = new DateTime(2024, 6, 2, 4, 8, 55, 956, DateTimeKind.Local).AddTicks(9812),
                             Naam = "Quis ipsum pariatur voluptatem voluptatum laboriosam officiis molestiae provident consequatur nihil culpa sed omnis non enim tempora numquam tempore et."
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 14,
                             Adres = "Hendriksmarkt 9",
                             EMail = "ut",
-                            GeboorteDatum = new DateTime(2025, 2, 28, 16, 9, 51, 465, DateTimeKind.Local).AddTicks(1282),
+                            GeboorteDatum = new DateTime(2025, 2, 28, 19, 59, 57, 36, DateTimeKind.Local).AddTicks(1001),
                             Naam = "Laboriosam nihil fugiat natus minima accusantium numquam rerum facilis molestiae soluta ratione facere debitis qui enim sit quia aut ea."
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 15,
                             Adres = "Daanlaan 751 I",
                             EMail = "aut",
-                            GeboorteDatum = new DateTime(2025, 4, 27, 10, 54, 49, 945, DateTimeKind.Local).AddTicks(6148),
+                            GeboorteDatum = new DateTime(2025, 4, 27, 14, 44, 55, 516, DateTimeKind.Local).AddTicks(5834),
                             Naam = "Voluptatibus qui quasi et repellat sunt totam quisquam maxime iste enim et explicabo laboriosam sunt et placeat illum temporibus tempora."
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 16,
                             Adres = "Vosplein 97",
                             EMail = "ut",
-                            GeboorteDatum = new DateTime(2024, 6, 15, 15, 36, 59, 550, DateTimeKind.Local).AddTicks(7367),
+                            GeboorteDatum = new DateTime(2024, 6, 15, 19, 27, 5, 121, DateTimeKind.Local).AddTicks(7066),
                             Naam = "Quia qui a dolore ut dolorem ea omnis ratione dolor velit aut cupiditate praesentium ut nemo voluptatem debitis ut et."
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 17,
                             Adres = "Meijerweg 413 I",
                             EMail = "consequatur",
-                            GeboorteDatum = new DateTime(2024, 7, 17, 3, 0, 29, 746, DateTimeKind.Local).AddTicks(2794),
+                            GeboorteDatum = new DateTime(2024, 7, 17, 6, 50, 35, 317, DateTimeKind.Local).AddTicks(2525),
                             Naam = "Non fugiat libero neque qui aliquid qui ut pariatur iusto maxime rerum maiores libero est vel a corrupti quia consectetur."
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 18,
                             Adres = "Vriesgracht 853 III",
                             EMail = "corrupti",
-                            GeboorteDatum = new DateTime(2024, 6, 6, 10, 45, 44, 3, DateTimeKind.Local).AddTicks(1507),
+                            GeboorteDatum = new DateTime(2024, 6, 6, 14, 35, 49, 574, DateTimeKind.Local).AddTicks(1269),
                             Naam = "Non rerum eum maiores eius ut maxime earum itaque aut vitae voluptas esse odio modi voluptatem itaque accusamus molestiae accusantium."
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 19,
                             Adres = "Johanneskade 500c",
                             EMail = "quibusdam",
-                            GeboorteDatum = new DateTime(2025, 1, 31, 9, 24, 21, 473, DateTimeKind.Local).AddTicks(2995),
+                            GeboorteDatum = new DateTime(2025, 1, 31, 13, 14, 27, 44, DateTimeKind.Local).AddTicks(2808),
                             Naam = "Nobis ea nihil molestias molestias odit et alias qui voluptatem quasi sit unde et odit architecto reprehenderit quam id harum."
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 20,
                             Adres = "Berghof 310a",
                             EMail = "omnis",
-                            GeboorteDatum = new DateTime(2024, 8, 26, 6, 52, 0, 0, DateTimeKind.Local).AddTicks(5073),
+                            GeboorteDatum = new DateTime(2024, 8, 26, 10, 42, 5, 571, DateTimeKind.Local).AddTicks(4900),
                             Naam = "Quis et et qui molestiae soluta laboriosam et recusandae sed occaecati recusandae quam neque a recusandae itaque earum cum eos."
                         });
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Leerling", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Leerling", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -194,7 +194,7 @@ namespace SimpleSchool.Migrations
                             Id = 11,
                             Adres = "Anneplantsoen 431a",
                             EMail = "consequatur",
-                            GeboorteDatum = new DateTime(2024, 8, 31, 5, 58, 45, 943, DateTimeKind.Local).AddTicks(8453),
+                            GeboorteDatum = new DateTime(2024, 8, 31, 9, 48, 51, 514, DateTimeKind.Local).AddTicks(7164),
                             Naam = "Voluptatem velit dolorem rerum fuga perferendis dolore tempora quia qui hic sed aut hic animi reprehenderit in nisi ab optio.",
                             OpleidingId = 11,
                             StudentenkaartId = 11
@@ -204,7 +204,7 @@ namespace SimpleSchool.Migrations
                             Id = 12,
                             Adres = "Semweg 883a",
                             EMail = "debitis",
-                            GeboorteDatum = new DateTime(2024, 12, 22, 13, 30, 42, 645, DateTimeKind.Local).AddTicks(5224),
+                            GeboorteDatum = new DateTime(2024, 12, 22, 17, 20, 48, 216, DateTimeKind.Local).AddTicks(3896),
                             Naam = "Et eius error qui sed natus sed rem quis neque perferendis excepturi vel ex tempora quia et laborum nostrum quasi.",
                             OpleidingId = 12,
                             StudentenkaartId = 12
@@ -214,7 +214,7 @@ namespace SimpleSchool.Migrations
                             Id = 13,
                             Adres = "Ricksteeg 239b",
                             EMail = "maxime",
-                            GeboorteDatum = new DateTime(2024, 10, 11, 9, 0, 38, 826, DateTimeKind.Local).AddTicks(9329),
+                            GeboorteDatum = new DateTime(2024, 10, 11, 12, 50, 44, 397, DateTimeKind.Local).AddTicks(8001),
                             Naam = "Expedita autem debitis maiores quia qui iste a maxime eaque consectetur non aut necessitatibus nobis sed et soluta odit voluptas.",
                             OpleidingId = 13,
                             StudentenkaartId = 13
@@ -224,7 +224,7 @@ namespace SimpleSchool.Migrations
                             Id = 14,
                             Adres = "Rubenhof 628c",
                             EMail = "eligendi",
-                            GeboorteDatum = new DateTime(2024, 8, 7, 7, 0, 46, 709, DateTimeKind.Local).AddTicks(524),
+                            GeboorteDatum = new DateTime(2024, 8, 7, 10, 50, 52, 279, DateTimeKind.Local).AddTicks(9216),
                             Naam = "Amet quis sunt alias quas eius harum reprehenderit ratione dolores est optio et magnam aut voluptatum et aut fuga fuga.",
                             OpleidingId = 14,
                             StudentenkaartId = 14
@@ -234,7 +234,7 @@ namespace SimpleSchool.Migrations
                             Id = 15,
                             Adres = "Dampark 525c",
                             EMail = "error",
-                            GeboorteDatum = new DateTime(2024, 12, 2, 16, 31, 51, 698, DateTimeKind.Local).AddTicks(876),
+                            GeboorteDatum = new DateTime(2024, 12, 2, 20, 21, 57, 268, DateTimeKind.Local).AddTicks(9592),
                             Naam = "Veniam ullam rerum possimus at qui ea ut iure laudantium similique eaque provident est consectetur voluptates aut sint qui quaerat.",
                             OpleidingId = 15,
                             StudentenkaartId = 15
@@ -244,7 +244,7 @@ namespace SimpleSchool.Migrations
                             Id = 16,
                             Adres = "Hoekplein 953 I",
                             EMail = "impedit",
-                            GeboorteDatum = new DateTime(2025, 5, 7, 14, 58, 56, 924, DateTimeKind.Local).AddTicks(7989),
+                            GeboorteDatum = new DateTime(2025, 5, 7, 18, 49, 2, 495, DateTimeKind.Local).AddTicks(6748),
                             Naam = "Deserunt aperiam qui corporis non aliquid illo odit qui veritatis sed recusandae dolores nesciunt illo maxime nesciunt sed accusamus vero.",
                             OpleidingId = 16,
                             StudentenkaartId = 16
@@ -254,7 +254,7 @@ namespace SimpleSchool.Migrations
                             Id = 17,
                             Adres = "Lucashof 194 II",
                             EMail = "non",
-                            GeboorteDatum = new DateTime(2025, 1, 16, 13, 57, 14, 98, DateTimeKind.Local).AddTicks(2751),
+                            GeboorteDatum = new DateTime(2025, 1, 16, 17, 47, 19, 669, DateTimeKind.Local).AddTicks(1527),
                             Naam = "Dolor pariatur id autem officiis sed saepe tempora in voluptas vero est occaecati suscipit eos cupiditate quasi voluptatum quidem laudantium.",
                             OpleidingId = 17,
                             StudentenkaartId = 17
@@ -264,7 +264,7 @@ namespace SimpleSchool.Migrations
                             Id = 18,
                             Adres = "Annavelt 32",
                             EMail = "adipisci",
-                            GeboorteDatum = new DateTime(2024, 9, 24, 12, 59, 38, 576, DateTimeKind.Local).AddTicks(4228),
+                            GeboorteDatum = new DateTime(2024, 9, 24, 16, 49, 44, 147, DateTimeKind.Local).AddTicks(2956),
                             Naam = "Soluta aut iste eaque rerum enim adipisci cumque quis occaecati pariatur non quisquam doloremque alias quaerat consectetur accusamus at vero.",
                             OpleidingId = 18,
                             StudentenkaartId = 18
@@ -274,7 +274,7 @@ namespace SimpleSchool.Migrations
                             Id = 19,
                             Adres = "Anoukmarkt 740b",
                             EMail = "optio",
-                            GeboorteDatum = new DateTime(2025, 1, 29, 19, 41, 38, 552, DateTimeKind.Local).AddTicks(8870),
+                            GeboorteDatum = new DateTime(2025, 1, 29, 23, 31, 44, 123, DateTimeKind.Local).AddTicks(7619),
                             Naam = "Maiores impedit maxime nemo et nesciunt facere numquam atque qui et voluptas consequatur amet sed et voluptate aut est autem.",
                             OpleidingId = 19,
                             StudentenkaartId = 19
@@ -284,14 +284,14 @@ namespace SimpleSchool.Migrations
                             Id = 20,
                             Adres = "Vriesplantsoen 420 I",
                             EMail = "voluptas",
-                            GeboorteDatum = new DateTime(2024, 10, 6, 21, 58, 36, 166, DateTimeKind.Local).AddTicks(1537),
+                            GeboorteDatum = new DateTime(2024, 10, 7, 1, 48, 41, 737, DateTimeKind.Local).AddTicks(287),
                             Naam = "Ut veritatis quo laudantium ullam consequatur odit dolorum illum accusamus dolore ipsa nihil quam maiores non minima consequatur velit totam.",
                             OpleidingId = 20,
                             StudentenkaartId = 20
                         });
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Opleiding", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Opleiding", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -400,7 +400,7 @@ namespace SimpleSchool.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.StudentenKaart", b =>
+            modelBuilder.Entity("SimpleSchool.Models.StudentenKaart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -497,7 +497,7 @@ namespace SimpleSchool.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Vak", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Vak", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -623,30 +623,30 @@ namespace SimpleSchool.Migrations
 
             modelBuilder.Entity("OpleidingVak", b =>
                 {
-                    b.HasOne("Simpleschool.Models.Opleiding", null)
+                    b.HasOne("SimpleSchool.Models.Opleiding", null)
                         .WithMany()
                         .HasForeignKey("OpleidingenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Simpleschool.Models.Vak", null)
+                    b.HasOne("SimpleSchool.Models.Vak", null)
                         .WithMany()
                         .HasForeignKey("VakkenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Leerling", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Leerling", b =>
                 {
-                    b.HasOne("Simpleschool.Models.Opleiding", "Opleiding")
+                    b.HasOne("SimpleSchool.Models.Opleiding", "Opleiding")
                         .WithMany("Leerlingen")
                         .HasForeignKey("OpleidingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Simpleschool.Models.StudentenKaart", "Studentenkaart")
+                    b.HasOne("SimpleSchool.Models.StudentenKaart", "Studentenkaart")
                         .WithOne("Leerling")
-                        .HasForeignKey("Simpleschool.Models.Leerling", "StudentenkaartId")
+                        .HasForeignKey("SimpleSchool.Models.Leerling", "StudentenkaartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -655,9 +655,9 @@ namespace SimpleSchool.Migrations
                     b.Navigation("Studentenkaart");
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Vak", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Vak", b =>
                 {
-                    b.HasOne("Simpleschool.Models.Leerkracht", "Leerkracht")
+                    b.HasOne("SimpleSchool.Models.Leerkracht", "Leerkracht")
                         .WithMany("Vakken")
                         .HasForeignKey("LeerkrachtId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -666,17 +666,17 @@ namespace SimpleSchool.Migrations
                     b.Navigation("Leerkracht");
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Leerkracht", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Leerkracht", b =>
                 {
                     b.Navigation("Vakken");
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.Opleiding", b =>
+            modelBuilder.Entity("SimpleSchool.Models.Opleiding", b =>
                 {
                     b.Navigation("Leerlingen");
                 });
 
-            modelBuilder.Entity("Simpleschool.Models.StudentenKaart", b =>
+            modelBuilder.Entity("SimpleSchool.Models.StudentenKaart", b =>
                 {
                     b.Navigation("Leerling")
                         .IsRequired();
