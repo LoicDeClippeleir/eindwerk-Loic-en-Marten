@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using Simpleschool.Models;
+using SimpleSchool.Models;
 
 
 
@@ -7,7 +7,7 @@ namespace SimpleSchool.Fakers
 {
     public class LeerkrachtFaker
     {
-        public static readonly Faker<Leerkracht> Faker = new Faker<Leerkracht>("nl")
+        public  Faker<Leerkracht> Faker = new Faker<Leerkracht>("nl")
             .RuleFor(l => l.Id, f => f.IndexFaker + 1)
             .RuleFor(l => l.Naam, f => f.Lorem.Sentence(20))
             .RuleFor(l => l.GeboorteDatum, f => f.Date.Past())

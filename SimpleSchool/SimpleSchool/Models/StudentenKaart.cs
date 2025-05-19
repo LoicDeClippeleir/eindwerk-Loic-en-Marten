@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+﻿
 
-namespace Simpleschool.Models
+namespace SimpleSchool.Models
 {
     public class StudentenKaart
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simpleschool.Models;
+using SimpleSchool.Models;
 using SimpleSchool.Fakers;
 
 
