@@ -54,3 +54,8 @@ namespace SimpleSchool.Seeders
         }
     }
 }
+
+in program :
+/*builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<SimpleSchoolContext>();
+builder.Services.AddControllersWithViews();*/

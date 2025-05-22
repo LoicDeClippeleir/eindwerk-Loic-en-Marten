@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,16 @@ namespace SimpleSchool.Controllers
 {
     public class LeerlingenController : Controller
     {
-        private readonly SimpleSchoolContext _context;
 
+        private readonly SimpleSchoolContext _context;
+        
         public LeerlingenController(SimpleSchoolContext context)
         {
             _context = context;
         }
 
         // GET: Leerlingen
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var simpleSchoolContext = _context.Leerling.Include(l => l.Opleiding).Include(l => l.Studentenkaart);

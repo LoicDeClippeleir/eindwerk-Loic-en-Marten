@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Models;
 using SimpleSchool.Seeders;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SimpleSchool.Data
 {
-    public class SimpleSchoolContext : DbContext
+    public class SimpleSchoolContext : IdentityDbContext
     {
         public SimpleSchoolContext (DbContextOptions<SimpleSchoolContext> options)
             : base(options)
