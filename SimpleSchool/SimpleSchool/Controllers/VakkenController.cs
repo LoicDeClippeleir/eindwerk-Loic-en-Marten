@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using SimpleSchool.Models;
 
 namespace SimpleSchool.Controllers
 {
+    [Authorize]
     public class VakkenController : Controller
     {
         private readonly SimpleSchoolContext _context;
@@ -124,6 +126,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Vakken/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

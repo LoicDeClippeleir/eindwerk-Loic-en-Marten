@@ -11,6 +11,7 @@ using SimpleSchool.Models;
 
 namespace SimpleSchool.Controllers
 {
+    [Authorize]
     public class LeerlingenController : Controller
     {
 
@@ -22,7 +23,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Leerlingen
-        [Authorize]
+       
         public async Task<IActionResult> Index()
         {
             var simpleSchoolContext = _context.Leerling.Include(l => l.Opleiding).Include(l => l.Studentenkaart);

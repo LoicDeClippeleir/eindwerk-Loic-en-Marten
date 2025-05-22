@@ -11,6 +11,7 @@ using SimpleSchool.Models;
 
 namespace SimpleSchool.Controllers
 {
+    [Authorize]
     public class OpleidingenController : Controller
     {
         private readonly SimpleSchoolContext _context;
@@ -21,6 +22,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.Opleiding.ToListAsync());
@@ -69,6 +71,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,6 +123,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

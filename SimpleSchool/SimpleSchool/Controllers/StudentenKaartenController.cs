@@ -11,9 +11,11 @@ using SimpleSchool.Models;
 
 namespace SimpleSchool.Controllers
 {
+    [Authorize]
     public class StudentenKaartenController : Controller
     {
         private readonly SimpleSchoolContext _context;
+        
 
         public StudentenKaartenController(SimpleSchoolContext context)
         {
@@ -69,6 +71,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: StudentenKaarten/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,6 +123,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: StudentenKaarten/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
