@@ -38,6 +38,29 @@
                 <span asp-validation-for="LeerkrachtId" class="text-danger"></span>
             </div>
 
+            using Microsoft.AspNetCore.Mvc.Rendering;
+            using System; // For Enum
+
+            public IActionResult Create()
+            {
+                ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam");
+                ViewData["Vaktype"] = new SelectList(Enum.GetValues(typeof(VakType)).Cast<VakType>().Select(v => new { Id = v, Name = v.ToString() }), "Id", "Name");
+                return View(new SimpleSchool.Viewmodels.Vak.VakCreateViewModel());
+            }
+
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> Create(SimpleSchool.Viewmodels.Vak.VakCreateViewModel model)
+            {
+                if (!ModelState.IsValid)
+                {
+                    ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", model.LeerkrachtId);
+                    ViewData["Vaktype"] = new SelectList(Enum.GetValues(typeof(VakType)).Cast<VakType>().Select(v => new { Id = v, Name = v.ToString() }), "Id", "Name", model.Vaktype);
+                    return View(model);
+                }
+                // ... rest van je code
+            }
+            <select asp-for="Vaktype" class="form-control" asp-items="ViewBag.Vaktype"></select>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
