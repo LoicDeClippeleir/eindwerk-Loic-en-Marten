@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
+using SimpleSchool.Viewmodels;
 
 namespace SimpleSchool.Controllers
 {
@@ -63,19 +64,25 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres,StudentenkaartId,OpleidingId")] Leerling leerling)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres,StudentenkaartId,OpleidingId")] LeerkrachtCreateViewModel leerlingViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(leerling);
-                await _context.SaveChangesAsync();
-                TempData["LeerlingAangemaakt"] = true;
-                return RedirectToAction(nameof(Index));
-                TempData["LeerlingAangemaakt"] = true;
+                ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
+                ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenkaartId);
+                return View(leerlingViewModel);
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
-          
+            var leerling = new Leerling
+            {
+                Naam = leerlingViewModel.Naam,
+                GeboorteDatum = leerlingViewModel.GeboorteDatum,
+                EMail = leerlingViewModel.EMail,
+                Adres = leerlingViewModel.Adres,
+                StudentenkaartId = leerlingViewModel.StudentenkaartId,
+                OpleidingId = leerlingViewModel.OpleidingId
+            };
+            _context.Leerling.Add(leerling);
+            await _context.SaveChangesAsync();
             return View(leerling);
         }
 
