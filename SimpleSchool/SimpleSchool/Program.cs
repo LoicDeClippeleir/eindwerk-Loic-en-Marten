@@ -57,7 +57,9 @@ app.Run();
 async Task SeedRoles(IServiceProvider serviceProvider)
 {
     var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roles = { "Admin", "Default" };
+    var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string[] roles = { "Leerkracht", "Leerling" };
 
     foreach (var role in roles)
     {
@@ -66,7 +68,28 @@ async Task SeedRoles(IServiceProvider serviceProvider)
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
-};
+
+    // Voeg standaard Leerkracht toe
+    string leerkrachtEmail = "leerkracht@school.be";
+    string leerkrachtWachtwoord = "Leerkracht123!";
+
+    var leerkrachtUser = await userManager.FindByEmailAsync(leerkrachtEmail);
+    if (leerkrachtUser == null)
+    {
+        leerkrachtUser = new IdentityUser
+        {
+            UserName = leerkrachtEmail,
+            Email = leerkrachtEmail,
+            EmailConfirmed = true
+        };
+        var result = await userManager.CreateAsync(leerkrachtUser, leerkrachtWachtwoord);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(leerkrachtUser, "Leerkracht");
+        }
+    }
+}
+
 
 using (var scope = app.Services.CreateScope())
 {

@@ -50,6 +50,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Vakken/Create
+        [Authorize(Roles = "Leerkracht")]
         public IActionResult Create()
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
@@ -86,6 +87,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Vakken/Edit/5
+        [Authorize(Roles = "Leerkracht")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -139,7 +141,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Vakken/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Leerkracht")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
