@@ -20,7 +20,7 @@ namespace SimpleSchool.Viewmodels
         // Deze methode voert de daadwerkelijke validatie uit.
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            // Controleer of de waarde een geldige geboortedatum is.
+
             if (value is DateTime geboortedatum)
             {
                 var today = DateTime.Today;

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
+using SimpleSchool.Viewmodels;
+using SimpleSchool.Viewmodels.Studentenkaart;
 
 namespace SimpleSchool.Controllers
 {
@@ -50,7 +52,7 @@ namespace SimpleSchool.Controllers
         [Authorize(Roles = "Leerkracht")]
         public IActionResult Create()
         {
-            return View();
+            return View(new StudentenkaartCreateViewModel());
         }
 
         // POST: StudentenKaarten/Create
@@ -58,18 +60,24 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,Klas,School")] StudentenKaart studentenKaart)
+        public async Task<IActionResult> Create([Bind("Id,Naam,Klas,School")] StudentenkaartCreateViewModel studentenKaartViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(studentenKaart);
-                await _context.SaveChangesAsync();
-                TempData["StudentenKaartAangemaakt"] = true;
-                return RedirectToAction(nameof(Index));
-            } else
+            if (!ModelState.IsValid)
             {
                 TempData["StudentenKaartAangemaakt"] = false;
+                return View(studentenKaartViewModel);
             }
+
+            var studentenKaart = new StudentenKaart
+            {
+                Naam = studentenKaartViewModel.Naam,
+                Klas = studentenKaartViewModel.Klas,
+                School = studentenKaartViewModel.School
+            };
+
+            _context.StudentenKaart.Add(studentenKaart);
+            await _context.SaveChangesAsync();
+            TempData["StudentenKaartAangemaakt"] = true;
             return View(studentenKaart);
         }
 

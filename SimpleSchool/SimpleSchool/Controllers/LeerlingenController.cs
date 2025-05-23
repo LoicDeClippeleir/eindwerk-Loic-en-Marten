@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
+using SimpleSchool.Viewmodels;
+using SimpleSchool.Viewmodels.Leerling;
 
 namespace SimpleSchool.Controllers
 {
@@ -55,7 +57,7 @@ namespace SimpleSchool.Controllers
         {
             ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id");
             ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id");
-            return View();
+            return View(new LeerlingCreateViewModel());
         }
 
         // POST: Leerlingen/Create
@@ -63,22 +65,27 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,EMail,Adres,StudentenkaartId,OpleidingId")] Leerling leerling)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,Email,Adres,StudentenkaartId,OpleidingId")] LeerlingCreateViewModel leerlingViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(leerling);
-                await _context.SaveChangesAsync();
-                TempData["LeerlingAangemaakt"] = true;
-                return RedirectToAction(nameof(Index));
-                
-            } else
-            {
+                ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
+                ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenKaartId);
                 TempData["LeerlingAangemaakt"] = false;
+                return View(leerlingViewModel);
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
-          
+            var leerling = new Leerling
+            {
+                Naam = leerlingViewModel.Naam,
+                GeboorteDatum = leerlingViewModel.GeboorteDatum,
+                EMail = leerlingViewModel.Email,
+                Adres = leerlingViewModel.Adres,
+                StudentenkaartId = leerlingViewModel.StudentenKaartId,
+                OpleidingId = leerlingViewModel.OpleidingId
+            };
+            _context.Leerling.Add(leerling);
+            TempData["LeerlingAangemaakt"] = true;
+            await _context.SaveChangesAsync();
             return View(leerling);
         }
 
