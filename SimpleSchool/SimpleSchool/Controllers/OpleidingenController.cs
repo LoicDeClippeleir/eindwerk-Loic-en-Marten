@@ -47,7 +47,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen/Create
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Leerkracht")]
         public IActionResult Create()
         {
             return View();
@@ -74,7 +74,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Leerkracht")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -126,7 +126,7 @@ namespace SimpleSchool.Controllers
         }
 
         // GET: Opleidingen/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Leerkracht")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

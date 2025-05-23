@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleSchool.Data;
 
@@ -11,9 +12,11 @@ using SimpleSchool.Data;
 namespace SimpleSchool.Migrations
 {
     [DbContext(typeof(SimpleSchoolContext))]
-    partial class SimpleSchoolContextModelSnapshot : ModelSnapshot
+    [Migration("20250523124243_rollen veranderd")]
+    partial class rollenveranderd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
