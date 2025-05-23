@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
+using SimpleSchool.Viewmodels;
+using SimpleSchool.Viewmodels.Opleiding;
 
 namespace SimpleSchool.Controllers
 {
@@ -50,7 +52,7 @@ namespace SimpleSchool.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            return View();
+            return View(new OpleidingCreateViewModel());
         }
 
         // POST: Opleidingen/Create
@@ -58,18 +60,24 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,Duur,BeschikbarePlaatsen,Beschrijving")] Opleiding opleiding)
+        public async Task<IActionResult> Create([Bind("Id,Naam,Duur,BeschikbarePlaatsen,Beschrijving")] OpleidingCreateViewModel opleidingViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(opleiding);
-                await _context.SaveChangesAsync();
-                TempData["OpleidingAangemaakt"] = true;
-                return RedirectToAction(nameof(Index));
-            } else
+            if (!ModelState.IsValid)
             {
                 TempData["OpleidingAangemaakt"] = false;
+                return View(opleidingViewModel);
             }
+
+            var opleiding = new Opleiding
+            {
+                Naam = opleidingViewModel.Naam,
+                Duur = opleidingViewModel.Duur,
+                BeschikbarePlaatsen = opleidingViewModel.BeschikbarePlaatsen,
+                Beschrijving = opleidingViewModel.Beschrijving
+            };
+            _context.Opleiding.Add(opleiding);
+            await _context.SaveChangesAsync();
+            TempData["OpleidingAangemaakt"] = true;
             return View(opleiding);
         }
 
