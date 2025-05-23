@@ -66,6 +66,9 @@ namespace SimpleSchool.Controllers
                 await _context.SaveChangesAsync();
                 TempData["StudentenKaartAangemaakt"] = true;
                 return RedirectToAction(nameof(Index));
+            } else
+            {
+                TempData["StudentenKaartAangemaakt"] = false;
             }
             return View(studentenKaart);
         }
