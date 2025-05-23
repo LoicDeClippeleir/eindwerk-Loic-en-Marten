@@ -53,7 +53,7 @@ namespace SimpleSchool.Controllers
         public IActionResult Create()
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
-            return View(new VakC);
+            return View(new VakCreateViewModel());
         }
 
         // POST: Vakken/Create
