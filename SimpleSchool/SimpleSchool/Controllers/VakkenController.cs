@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
+using SimpleSchool.Viewmodels;
+using SimpleSchool.Viewmodels.Vak;
 
 namespace SimpleSchool.Controllers
 {
@@ -51,7 +53,7 @@ namespace SimpleSchool.Controllers
         public IActionResult Create()
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
-            return View();
+            return View(new VakC);
         }
 
         // POST: Vakken/Create
@@ -59,19 +61,27 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,Taal,AantalStudiePunten,Vaktype,LeerkrachtId")] Vak vak)
+        public async Task<IActionResult> Create([Bind("Id,Naam,Taal,AantalStudiePunten,Vaktype,LeerkrachtId")] VakCreateViewModel vakViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(vak);
-                await _context.SaveChangesAsync();
-                TempData["VakAangemaakt"] = true;
-                return RedirectToAction(nameof(Index));
-            } else
-            {
+                ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
                 TempData["VakAangemaakt"] = false;
+                return View(vakViewModel);
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
+
+            var vak = new Vak
+            {
+                Naam = vakViewModel.Naam,
+                Taal = vakViewModel.Taal,
+                AantalStudiePunten = vakViewModel.AantalStudiePunten,
+                Vaktype = vakViewModel.Vaktype,
+                LeerkrachtId = vakViewModel.LeerkrachtId
+            };
+
+            _context.Vak.Add(vak);
+            await _context.SaveChangesAsync();
+            TempData["VakAangemaakt"] = true;
             return View(vak);
         }
 
