@@ -65,7 +65,9 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam", leerkrachtViewModel.VakkenIds);// als de model state nie valid is dan moeten we terug de selectlist vullen voor in de index
+                TempData["LeerkrachtAangemaakt"] = false;
                 return View(leerkrachtViewModel);
+
             }
             var leerkracht = new Leerkracht
             {
