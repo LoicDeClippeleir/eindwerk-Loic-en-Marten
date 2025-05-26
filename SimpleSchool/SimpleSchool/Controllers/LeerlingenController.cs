@@ -97,14 +97,29 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerling = await _context.Leerling.FindAsync(id);
+            var leerling = await _context.Leerling
+                .AsNoTracking()
+                .FirstOrDefaultAsync(l => l.Id == id);
+
             if (leerling == null)
             {
                 return NotFound();
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
-            return View(leerling);
+
+            var viewModel = new LeerlingEditViewModel
+            {
+                Id = leerling.Id,
+                Naam = leerling.Naam,
+                GeboorteDatum = leerling.GeboorteDatum,
+                EMail = leerling.EMail,
+                Adres = leerling.Adres,
+                StudentenkaartId = leerling.StudentenkaartId,
+                OpleidingId = leerling.OpleidingId
+            };
+
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", viewModel.OpleidingId);
+            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", viewModel.StudentenkaartId);
+            return View(viewModel);
         }
 
         // POST: Leerlingen/Edit/5
@@ -112,35 +127,35 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,GeboorteDatum,EMail,Adres,StudentenkaartId,OpleidingId")] Leerling leerling)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,GeboorteDatum,EMail,Adres,StudentenkaartId,OpleidingId")] LeerlingEditViewModel leerlingViewModel)
         {
-            if (id != leerling.Id)
+            if (id != leerlingViewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(leerling);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LeerlingExists(leerling.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
+                ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenkaartId);
+                return View(leerlingViewModel);
             }
-            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id", leerling.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id", leerling.StudentenkaartId);
+
+            var leerling = await _context.Leerling.FindAsync(id);
+            if (leerling == null)
+            {
+                return NotFound();
+            }
+
+            leerling.Naam = leerlingViewModel.Naam;
+            leerling.GeboorteDatum = leerlingViewModel.GeboorteDatum;
+            leerling.EMail = leerlingViewModel.EMail;
+            leerling.Adres = leerlingViewModel.Adres;
+            leerling.StudentenkaartId = leerlingViewModel.StudentenkaartId;
+            leerling.OpleidingId = leerlingViewModel.OpleidingId;
+
+            _context.Update(leerling);
+            await _context.SaveChangesAsync();
             return View(leerling);
         }
 
