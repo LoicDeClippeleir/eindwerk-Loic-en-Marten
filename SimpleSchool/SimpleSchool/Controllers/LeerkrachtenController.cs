@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using SimpleSchool.Data;
 using SimpleSchool.Models;
 using SimpleSchool.Viewmodels;
+using SimpleSchool.Viewmodels.Leerkracht;
 
 
 namespace SimpleSchool.Controllers
@@ -92,12 +93,27 @@ namespace SimpleSchool.Controllers
                 return NotFound();
             }
 
-            var leerkracht = await _context.Leerkracht.FindAsync(id);
+            var leerkracht = await _context.Leerkracht
+                .Include(l => l.Vakken)
+                .FirstOrDefaultAsync(l => l.Id == id);
+
             if (leerkracht == null)
             {
                 return NotFound();
             }
-            return View(leerkracht);
+
+            var viewModel = new LeerkrachtEditViewModel
+            {
+                Id = leerkracht.Id,
+                Naam = leerkracht.Naam,
+                GeboorteDatum = leerkracht.GeboorteDatum,
+                EMail = leerkracht.EMail,
+                Adres = leerkracht.Adres,
+                VakkenIds = leerkracht.Vakken.Select(v => v.Id).ToList()
+            };
+
+            ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam", viewModel.VakkenIds);
+            return View(viewModel);
         }
 
         // POST: Leerkrachts/Edit/5
@@ -105,33 +121,39 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,GeboorteDatum,EMail,Adres")] Leerkracht leerkracht)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,GeboorteDatum,EMail,Adres")] LeerkrachtEditViewModel leerkrachtviewModel)
         {
-            if (id != leerkracht.Id)
+            if (id != leerkrachtviewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(leerkracht);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LeerkrachtExists(leerkracht.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam", leerkrachtviewModel.VakkenIds);
+                return View(leerkrachtviewModel);
             }
+
+            var leerkracht = await _context.Leerkracht
+                .Include(l => l.Vakken)
+                .FirstOrDefaultAsync(l => l.Id == id);
+
+            if (leerkracht == null)
+            {
+                return NotFound();
+            }
+
+            // Update properties
+            leerkracht.Naam = leerkrachtviewModel.Naam;
+            leerkracht.GeboorteDatum = leerkrachtviewModel.GeboorteDatum;
+            leerkracht.EMail = leerkrachtviewModel.EMail;
+            leerkracht.Adres = leerkrachtviewModel.Adres;
+
+            // Update vakken
+            leerkracht.Vakken = _context.Vak.Where(v => leerkrachtviewModel.VakkenIds.Contains(v.Id)).ToList();
+
+            _context.Update(leerkracht);
+            await _context.SaveChangesAsync();
             return View(leerkracht);
         }
 
