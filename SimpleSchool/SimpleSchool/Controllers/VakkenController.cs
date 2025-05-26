@@ -100,8 +100,19 @@ namespace SimpleSchool.Controllers
             {
                 return NotFound();
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
-            return View(vak);
+
+            var viewModel = new VakEditViewModel
+            {
+                Id = vak.Id,
+                Naam = vak.Naam,
+                Taal = vak.Taal,
+                AantalStudiePunten = vak.AantalStudiePunten,
+                Vaktype = vak.Vaktype,
+                LeerkrachtId = vak.LeerkrachtId
+            };
+
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", viewModel.LeerkrachtId);
+            return View(viewModel);
         }
 
         // POST: Vakken/Edit/5
@@ -109,34 +120,33 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Taal,AantalStudiePunten,Vaktype,LeerkrachtId")] Vak vak)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Taal,AantalStudiePunten,Vaktype,LeerkrachtId")] VakEditViewModel vakViewModel)
         {
-            if (id != vak.Id)
+            if (id != vakViewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(vak);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VakExists(vak.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
+                return View(vakViewModel);
             }
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id", vak.LeerkrachtId);
+
+            var vak = await _context.Vak.FindAsync(id);
+            if (vak == null)
+            {
+                return NotFound();
+            }
+
+            vak.Naam = vakViewModel.Naam;
+            vak.Taal = vakViewModel.Taal;
+            vak.AantalStudiePunten = vakViewModel.AantalStudiePunten;
+            vak.Vaktype = vakViewModel.Vaktype;
+            vak.LeerkrachtId = vakViewModel.LeerkrachtId;
+
+            _context.Update(vak);
+            await _context.SaveChangesAsync();
             return View(vak);
         }
 

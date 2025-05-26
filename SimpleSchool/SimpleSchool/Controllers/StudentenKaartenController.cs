@@ -95,7 +95,16 @@ namespace SimpleSchool.Controllers
             {
                 return NotFound();
             }
-            return View(studentenKaart);
+
+            var viewModel = new StudentenkaartEditViewModel
+            {
+                Id = studentenKaart.Id,
+                Naam = studentenKaart.Naam,
+                Klas = studentenKaart.Klas,
+                School = studentenKaart.School
+            };
+
+            return View(viewModel);
         }
 
         // POST: StudentenKaarten/Edit/5
@@ -103,33 +112,30 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Klas,School")] StudentenKaart studentenKaart)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Klas,School")] StudentenkaartEditViewModel studentenKaartViewModel)
         {
-            if (id != studentenKaart.Id)
+            if (id != studentenKaartViewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(studentenKaart);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StudentenKaartExists(studentenKaart.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return View(studentenKaartViewModel);
             }
+
+            var studentenKaart = await _context.StudentenKaart.FindAsync(id);
+            if (studentenKaart == null)
+            {
+                return NotFound();
+            }
+
+            studentenKaart.Naam = studentenKaartViewModel.Naam;
+            studentenKaart.Klas = studentenKaartViewModel.Klas;
+            studentenKaart.School = studentenKaartViewModel.School;
+
+            _context.Update(studentenKaart);
+            await _context.SaveChangesAsync();
             return View(studentenKaart);
         }
 
