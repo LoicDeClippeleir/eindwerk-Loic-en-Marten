@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleSchool.Data;
 
@@ -11,9 +12,11 @@ using SimpleSchool.Data;
 namespace SimpleSchool.Migrations
 {
     [DbContext(typeof(SimpleSchoolContext))]
-    partial class SimpleSchoolContextModelSnapshot : ModelSnapshot
+    [Migration("20250526082714_leerkracht rol")]
+    partial class leerkrachtrol
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +275,7 @@ namespace SimpleSchool.Migrations
                             Id = 11,
                             Adres = "Noapark 5",
                             EMail = "et",
-                            GeboorteDatum = new DateTime(2024, 10, 26, 18, 51, 46, 561, DateTimeKind.Local).AddTicks(4373),
+                            GeboorteDatum = new DateTime(2024, 10, 26, 18, 16, 45, 120, DateTimeKind.Local).AddTicks(8845),
                             Naam = "Jayden Bruin"
                         },
                         new
@@ -280,7 +283,7 @@ namespace SimpleSchool.Migrations
                             Id = 12,
                             Adres = "Brouwersteeg 566 I",
                             EMail = "dolorem",
-                            GeboorteDatum = new DateTime(2024, 6, 16, 19, 12, 18, 391, DateTimeKind.Local).AddTicks(5930),
+                            GeboorteDatum = new DateTime(2024, 6, 16, 18, 37, 16, 951, DateTimeKind.Local).AddTicks(348),
                             Naam = "Johannes Vermeulen"
                         },
                         new
@@ -288,7 +291,7 @@ namespace SimpleSchool.Migrations
                             Id = 13,
                             Adres = "Daanplantsoen 742a",
                             EMail = "soluta",
-                            GeboorteDatum = new DateTime(2024, 11, 25, 6, 52, 42, 59, DateTimeKind.Local).AddTicks(2020),
+                            GeboorteDatum = new DateTime(2024, 11, 25, 6, 17, 40, 618, DateTimeKind.Local).AddTicks(6459),
                             Naam = "Maud Wit"
                         },
                         new
@@ -296,7 +299,7 @@ namespace SimpleSchool.Migrations
                             Id = 14,
                             Adres = "Petersplein 394c",
                             EMail = "voluptatem",
-                            GeboorteDatum = new DateTime(2024, 11, 3, 23, 6, 22, 499, DateTimeKind.Local).AddTicks(9166),
+                            GeboorteDatum = new DateTime(2024, 11, 3, 22, 31, 21, 59, DateTimeKind.Local).AddTicks(3640),
                             Naam = "Julian Bakker"
                         },
                         new
@@ -304,7 +307,7 @@ namespace SimpleSchool.Migrations
                             Id = 15,
                             Adres = "Femkepassage 655a",
                             EMail = "dolor",
-                            GeboorteDatum = new DateTime(2024, 8, 29, 0, 30, 9, 682, DateTimeKind.Local).AddTicks(8433),
+                            GeboorteDatum = new DateTime(2024, 8, 28, 23, 55, 8, 242, DateTimeKind.Local).AddTicks(2866),
                             Naam = "Amber Schouten"
                         },
                         new
@@ -312,7 +315,7 @@ namespace SimpleSchool.Migrations
                             Id = 16,
                             Adres = "Boersloot 739a",
                             EMail = "vel",
-                            GeboorteDatum = new DateTime(2024, 8, 29, 1, 14, 24, 498, DateTimeKind.Local).AddTicks(2663),
+                            GeboorteDatum = new DateTime(2024, 8, 29, 0, 39, 23, 57, DateTimeKind.Local).AddTicks(7145),
                             Naam = "Thijs Visser"
                         },
                         new
@@ -320,7 +323,7 @@ namespace SimpleSchool.Migrations
                             Id = 17,
                             Adres = "Brinkweg 0",
                             EMail = "et",
-                            GeboorteDatum = new DateTime(2025, 2, 6, 7, 41, 28, 425, DateTimeKind.Local).AddTicks(5501),
+                            GeboorteDatum = new DateTime(2025, 2, 6, 7, 6, 26, 984, DateTimeKind.Local).AddTicks(9946),
                             Naam = "Bas Broek"
                         },
                         new
@@ -328,7 +331,7 @@ namespace SimpleSchool.Migrations
                             Id = 18,
                             Adres = "Kostergracht 749 II",
                             EMail = "consequatur",
-                            GeboorteDatum = new DateTime(2024, 10, 23, 22, 6, 44, 862, DateTimeKind.Local).AddTicks(2336),
+                            GeboorteDatum = new DateTime(2024, 10, 23, 21, 31, 43, 421, DateTimeKind.Local).AddTicks(6784),
                             Naam = "Nick Smits"
                         },
                         new
@@ -336,7 +339,7 @@ namespace SimpleSchool.Migrations
                             Id = 19,
                             Adres = "Grootpassage 2",
                             EMail = "ipsam",
-                            GeboorteDatum = new DateTime(2025, 4, 4, 15, 53, 48, 874, DateTimeKind.Local).AddTicks(1259),
+                            GeboorteDatum = new DateTime(2025, 4, 4, 15, 18, 47, 433, DateTimeKind.Local).AddTicks(5722),
                             Naam = "Bas Dekker"
                         },
                         new
@@ -344,7 +347,7 @@ namespace SimpleSchool.Migrations
                             Id = 20,
                             Adres = "Liekerijk 358b",
                             EMail = "ducimus",
-                            GeboorteDatum = new DateTime(2024, 9, 16, 5, 27, 43, 965, DateTimeKind.Local).AddTicks(4248),
+                            GeboorteDatum = new DateTime(2024, 9, 16, 4, 52, 42, 524, DateTimeKind.Local).AddTicks(8644),
                             Naam = "Jasper Smits"
                         });
                 });
@@ -393,7 +396,7 @@ namespace SimpleSchool.Migrations
                             Id = 11,
                             Adres = "Smitsplantsoen 223b",
                             EMail = "facere",
-                            GeboorteDatum = new DateTime(2024, 9, 27, 22, 56, 6, 608, DateTimeKind.Local).AddTicks(2305),
+                            GeboorteDatum = new DateTime(2024, 9, 27, 22, 21, 5, 167, DateTimeKind.Local).AddTicks(6519),
                             Naam = "Tim Meer",
                             OpleidingId = 11,
                             StudentenkaartId = 11
@@ -403,7 +406,7 @@ namespace SimpleSchool.Migrations
                             Id = 12,
                             Adres = "Larsplantsoen 484 I",
                             EMail = "pariatur",
-                            GeboorteDatum = new DateTime(2024, 10, 9, 23, 35, 2, 917, DateTimeKind.Local).AddTicks(3147),
+                            GeboorteDatum = new DateTime(2024, 10, 9, 23, 0, 1, 476, DateTimeKind.Local).AddTicks(7356),
                             Naam = "Sanne Graaf",
                             OpleidingId = 12,
                             StudentenkaartId = 12
@@ -413,7 +416,7 @@ namespace SimpleSchool.Migrations
                             Id = 13,
                             Adres = "Grootweg 950 III",
                             EMail = "magni",
-                            GeboorteDatum = new DateTime(2024, 7, 1, 7, 32, 23, 608, DateTimeKind.Local).AddTicks(5816),
+                            GeboorteDatum = new DateTime(2024, 7, 1, 6, 57, 22, 168, DateTimeKind.Local).AddTicks(82),
                             Naam = "Britt Hendriks",
                             OpleidingId = 13,
                             StudentenkaartId = 13
@@ -423,7 +426,7 @@ namespace SimpleSchool.Migrations
                             Id = 14,
                             Adres = "Bruinpark 030 I",
                             EMail = "est",
-                            GeboorteDatum = new DateTime(2025, 4, 3, 22, 15, 39, 204, DateTimeKind.Local).AddTicks(4137),
+                            GeboorteDatum = new DateTime(2025, 4, 3, 21, 40, 37, 763, DateTimeKind.Local).AddTicks(8355),
                             Naam = "Julian Brouwer",
                             OpleidingId = 14,
                             StudentenkaartId = 14
@@ -433,7 +436,7 @@ namespace SimpleSchool.Migrations
                             Id = 15,
                             Adres = "Irispark 164 I",
                             EMail = "exercitationem",
-                            GeboorteDatum = new DateTime(2025, 1, 19, 15, 45, 14, 808, DateTimeKind.Local).AddTicks(3568),
+                            GeboorteDatum = new DateTime(2025, 1, 19, 15, 10, 13, 367, DateTimeKind.Local).AddTicks(7798),
                             Naam = "Femke Ven",
                             OpleidingId = 15,
                             StudentenkaartId = 15
@@ -443,7 +446,7 @@ namespace SimpleSchool.Migrations
                             Id = 16,
                             Adres = "Julianmarkt 549 I",
                             EMail = "et",
-                            GeboorteDatum = new DateTime(2025, 2, 15, 22, 19, 23, 967, DateTimeKind.Local).AddTicks(6102),
+                            GeboorteDatum = new DateTime(2025, 2, 15, 21, 44, 22, 527, DateTimeKind.Local).AddTicks(360),
                             Naam = "Sven Meijer",
                             OpleidingId = 16,
                             StudentenkaartId = 16
@@ -453,7 +456,7 @@ namespace SimpleSchool.Migrations
                             Id = 17,
                             Adres = "Sanderstraat 8",
                             EMail = "tenetur",
-                            GeboorteDatum = new DateTime(2024, 10, 7, 1, 36, 44, 1, DateTimeKind.Local).AddTicks(5366),
+                            GeboorteDatum = new DateTime(2024, 10, 7, 1, 1, 42, 560, DateTimeKind.Local).AddTicks(9587),
                             Naam = "Eva Peters",
                             OpleidingId = 17,
                             StudentenkaartId = 17
@@ -463,7 +466,7 @@ namespace SimpleSchool.Migrations
                             Id = 18,
                             Adres = "Meijerstraat 257",
                             EMail = "aut",
-                            GeboorteDatum = new DateTime(2025, 3, 9, 17, 0, 38, 19, DateTimeKind.Local).AddTicks(9048),
+                            GeboorteDatum = new DateTime(2025, 3, 9, 16, 25, 36, 579, DateTimeKind.Local).AddTicks(3306),
                             Naam = "Thijs Broek",
                             OpleidingId = 18,
                             StudentenkaartId = 18
@@ -473,7 +476,7 @@ namespace SimpleSchool.Migrations
                             Id = 19,
                             Adres = "Mulderkade 644",
                             EMail = "ut",
-                            GeboorteDatum = new DateTime(2024, 11, 23, 18, 21, 25, 263, DateTimeKind.Local).AddTicks(4727),
+                            GeboorteDatum = new DateTime(2024, 11, 23, 17, 46, 23, 822, DateTimeKind.Local).AddTicks(8945),
                             Naam = "Stijn Wit",
                             OpleidingId = 19,
                             StudentenkaartId = 19
@@ -483,7 +486,7 @@ namespace SimpleSchool.Migrations
                             Id = 20,
                             Adres = "Johannesrijk 071a",
                             EMail = "quia",
-                            GeboorteDatum = new DateTime(2024, 9, 23, 12, 29, 48, 338, DateTimeKind.Local).AddTicks(3562),
+                            GeboorteDatum = new DateTime(2024, 9, 23, 11, 54, 46, 897, DateTimeKind.Local).AddTicks(7855),
                             Naam = "Bram Brink",
                             OpleidingId = 20,
                             StudentenkaartId = 20
