@@ -59,3 +59,6 @@ in program :
 /*builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<SimpleSchoolContext>();
 builder.Services.AddControllersWithViews();*/
+
+
+SimpleSchoolContext-f0fdc8e0-c408-4ff2-b45c-883891a48143;Trusted_Connection=True;MultipleActiveResultSets=true"
