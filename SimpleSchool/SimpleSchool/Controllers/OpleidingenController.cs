@@ -95,7 +95,17 @@ namespace SimpleSchool.Controllers
             {
                 return NotFound();
             }
-            return View(opleiding);
+
+            var viewModel = new OpleidingEditViewModel
+            {
+                Id = opleiding.Id,
+                Naam = opleiding.Naam,
+                Duur = opleiding.Duur,
+                BeschikbarePlaatsen = opleiding.BeschikbarePlaatsen,
+                Beschrijving = opleiding.Beschrijving
+            };
+
+            return View(viewModel);
         }
 
         // POST: Opleidingen/Edit/5
@@ -103,33 +113,31 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Duur,BeschikbarePlaatsen,Beschrijving")] Opleiding opleiding)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Duur,BeschikbarePlaatsen,Beschrijving")] OpleidingEditViewModel opleidingViewModel)
         {
-            if (id != opleiding.Id)
+            if (id != opleidingViewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(opleiding);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OpleidingExists(opleiding.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return View(opleidingViewModel);
             }
+
+            var opleiding = await _context.Opleiding.FindAsync(id);
+            if (opleiding == null)
+            {
+                return NotFound();
+            }
+
+            opleiding.Naam = opleidingViewModel.Naam;
+            opleiding.Duur = opleidingViewModel.Duur;
+            opleiding.BeschikbarePlaatsen = opleidingViewModel.BeschikbarePlaatsen;
+            opleiding.Beschrijving = opleidingViewModel.Beschrijving;
+
+            _context.Update(opleiding);
+            await _context.SaveChangesAsync();
             return View(opleiding);
         }
 
