@@ -35,14 +35,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="OpleidingId" class="control-label"></label>
-                <select asp-for="OpleidingId" class="form-control" asp-items="ViewData["OpleidingId"]"></select>
+                <select asp-for="OpleidingId" class="form-control" asp-items="ViewBag.OpleidingId"></select>
                 <span asp-validation-for="OpleidingId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StudentenkaartId" class="control-label"></label>
-                <select asp-for="StudentenkaartId" class="form-control" asp-items="ViewData["StudentenkaartId"]"></select>
-                <span asp-validation-for="StudentenkaartId" class="text-danger"></span> 
+                <select asp-for="StudentenkaartId" class="form-control" asp-items="ViewBag.StudentenkaartId"></select>
+                <span asp-validation-for="StudentenkaartId" class="text-danger"></span>
             </div>
+
 
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
