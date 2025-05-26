@@ -13,7 +13,7 @@ using SimpleSchool.Viewmodels.Leerling;
 
 namespace SimpleSchool.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Leerkracht")]
     public class LeerlingenController : Controller
     {
 
