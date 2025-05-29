@@ -56,7 +56,7 @@ namespace SimpleSchool.Controllers
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
             ViewBag.Vaktypes = new SelectList(new[] { "Theorie", "Praktijk" });
-            ViewBag.Leerkrachten = new SelectList(_context.Leerkrachten, "Id", "Naam");
+            ViewBag.Leerkrachten = new SelectList(_context.Leerkracht, "Id", "Naam");
             
             return View(new VakCreateViewModel());
         }
