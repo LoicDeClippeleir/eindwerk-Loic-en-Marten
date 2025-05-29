@@ -164,6 +164,8 @@ namespace SimpleSchool.Controllers
 
             _context.Update(leerling);
             await _context.SaveChangesAsync();
+            TempData["LeerlingEdit"] = true;
+           
             return RedirectToAction(nameof(Index));
         }
 
@@ -196,6 +198,7 @@ namespace SimpleSchool.Controllers
             if (leerling != null)
             {
                 _context.Leerling.Remove(leerling);
+                TempData["LeerlingDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

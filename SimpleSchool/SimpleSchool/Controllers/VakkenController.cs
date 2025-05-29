@@ -71,7 +71,7 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
-                TempData["VakAangemaakt"] = false;
+               
                 return View(vakViewModel);
             }
 
@@ -151,6 +151,8 @@ namespace SimpleSchool.Controllers
 
             _context.Update(vak);
             await _context.SaveChangesAsync();
+            TempData["VakEdit"] = true;
+            
             return RedirectToAction(nameof(Index));
         }
 
@@ -183,6 +185,7 @@ namespace SimpleSchool.Controllers
             if (vak != null)
             {
                 _context.Vak.Remove(vak);
+                TempData["VakDelete"] = true;
             }
 
             await _context.SaveChangesAsync();
