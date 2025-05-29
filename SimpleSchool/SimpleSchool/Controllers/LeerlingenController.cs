@@ -86,7 +86,7 @@ namespace SimpleSchool.Controllers
             _context.Leerling.Add(leerling);
             TempData["LeerlingAangemaakt"] = true;
             await _context.SaveChangesAsync();
-            return View(leerling);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerlingen/Edit/5
@@ -156,7 +156,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(leerling);
             await _context.SaveChangesAsync();
-            return View(leerling);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerlingen/Delete/5

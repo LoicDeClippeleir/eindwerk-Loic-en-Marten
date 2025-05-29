@@ -83,7 +83,7 @@ namespace SimpleSchool.Controllers
             _context.Vak.Add(vak);
             await _context.SaveChangesAsync();
             TempData["VakAangemaakt"] = true;
-            return View(vak);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Edit/5
@@ -147,7 +147,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(vak);
             await _context.SaveChangesAsync();
-            return View(vak);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Delete/5

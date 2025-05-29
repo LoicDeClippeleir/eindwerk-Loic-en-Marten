@@ -78,7 +78,7 @@ namespace SimpleSchool.Controllers
             _context.Opleiding.Add(opleiding);
             await _context.SaveChangesAsync();
             TempData["OpleidingAangemaakt"] = true;
-            return View(opleiding);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Opleidingen/Edit/5
@@ -138,7 +138,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(opleiding);
             await _context.SaveChangesAsync();
-            return View(opleiding);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Opleidingen/Delete/5
