@@ -11,6 +11,7 @@ using SimpleSchool.Models;
 using SimpleSchool.Viewmodels;
 using SimpleSchool.Viewmodels.Vak;
 
+
 namespace SimpleSchool.Controllers
 {
     [Authorize]
@@ -54,6 +55,9 @@ namespace SimpleSchool.Controllers
         public IActionResult Create()
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
+            ViewBag.Vaktypes = new SelectList(new[] { "Theorie", "Praktijk" });
+            ViewBag.Leerkrachten = new SelectList(_context.Leerkrachten, "Id", "Naam");
+            
             return View(new VakCreateViewModel());
         }
 
@@ -83,7 +87,7 @@ namespace SimpleSchool.Controllers
             _context.Vak.Add(vak);
             await _context.SaveChangesAsync();
             TempData["VakAangemaakt"] = true;
-            return View(vak);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Edit/5
@@ -149,6 +153,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync();
             TempData["VakEdit"] = true;
             return View(vak);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Delete/5

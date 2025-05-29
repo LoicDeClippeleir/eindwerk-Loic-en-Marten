@@ -52,7 +52,7 @@ namespace SimpleSchool.Controllers
         public IActionResult Create()
         {
             ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam");
-            return View(new SimpleSchool.Viewmodels.LeerkrachtCreateViewModel());
+            return View(new LeerkrachtCreateViewModel());
         }
 
 
@@ -82,7 +82,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync(); 
             
             TempData["LeerkrachtAangemaakt"] = true;
-            return View(leerkracht);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerkrachts/Edit/5
@@ -156,6 +156,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync();
             TempData["LeerkrachtGeedit"] = true;
             return View(leerkracht);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerkrachts/Delete/5

@@ -78,7 +78,7 @@ namespace SimpleSchool.Controllers
             _context.StudentenKaart.Add(studentenKaart);
             await _context.SaveChangesAsync();
             TempData["StudentenKaartAangemaakt"] = true;
-            return View(studentenKaart);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: StudentenKaarten/Edit/5
@@ -138,6 +138,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync();
             TempData["StudentenKaartEdit"] = true;
             return View(studentenKaart);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: StudentenKaarten/Delete/5
