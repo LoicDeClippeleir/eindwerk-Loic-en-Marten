@@ -11,6 +11,7 @@ using SimpleSchool.Models;
 using SimpleSchool.Viewmodels;
 using SimpleSchool.Viewmodels.Vak;
 
+
 namespace SimpleSchool.Controllers
 {
     [Authorize]
@@ -54,6 +55,9 @@ namespace SimpleSchool.Controllers
         public IActionResult Create()
         {
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
+            ViewBag.Vaktypes = new SelectList(new[] { "Theorie", "Praktijk" });
+            ViewBag.Leerkrachten = new SelectList(_context.Leerkrachten, "Id", "Naam");
+            
             return View(new VakCreateViewModel());
         }
 
