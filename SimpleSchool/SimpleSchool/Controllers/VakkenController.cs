@@ -152,7 +152,7 @@ namespace SimpleSchool.Controllers
             _context.Update(vak);
             await _context.SaveChangesAsync();
             TempData["VakEdit"] = true;
-            return View(vak);
+            
             return RedirectToAction(nameof(Index));
         }
 

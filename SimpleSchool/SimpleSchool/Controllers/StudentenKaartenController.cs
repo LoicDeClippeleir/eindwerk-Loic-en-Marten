@@ -137,7 +137,7 @@ namespace SimpleSchool.Controllers
             _context.Update(studentenKaart);
             await _context.SaveChangesAsync();
             TempData["StudentenKaartEdit"] = true;
-            return View(studentenKaart);
+            
             return RedirectToAction(nameof(Index));
         }
 

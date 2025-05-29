@@ -155,7 +155,7 @@ namespace SimpleSchool.Controllers
             _context.Update(leerkracht);
             await _context.SaveChangesAsync();
             TempData["LeerkrachtGeedit"] = true;
-            return View(leerkracht);
+            
             return RedirectToAction(nameof(Index));
         }
 
