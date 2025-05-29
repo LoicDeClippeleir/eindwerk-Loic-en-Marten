@@ -54,10 +54,13 @@ namespace SimpleSchool.Controllers
         [Authorize(Roles = "Leerkracht")]
         public IActionResult Create()
         {
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
-            ViewBag.Vaktypes = new SelectList(new[] { "Theorie", "Praktijk" });
-            ViewBag.Leerkrachten = new SelectList(_context.Leerkracht, "Id", "Naam");
-            
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam");
+            ViewBag.Vaktypes = new SelectList(
+                Enum.GetValues(typeof(VakType))
+                    .Cast<VakType>()
+                    .Select(v => new { Id = v, Name = v.ToString() }),
+                "Id", "Name"
+            );
             return View(new VakCreateViewModel());
         }
 
@@ -71,7 +74,12 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
-               
+                ViewBag.Vaktypes = new SelectList(
+                    Enum.GetValues(typeof(VakType))
+                        .Cast<VakType>()
+                        .Select(v => new { Id = v, Name = v.ToString() }),
+                    "Id", "Name", vakViewModel.Vaktype
+                );
                 return View(vakViewModel);
             }
 
@@ -116,6 +124,12 @@ namespace SimpleSchool.Controllers
             };
 
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", viewModel.LeerkrachtId);
+            ViewBag.Vaktypes = new SelectList(
+                Enum.GetValues(typeof(VakType))
+                    .Cast<VakType>()
+                    .Select(v => new { Id = v, Name = v.ToString() }),
+                "Id", "Name", viewModel.Vaktype
+            );
             return View(viewModel);
         }
 
@@ -134,6 +148,12 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
+                ViewBag.Vaktypes = new SelectList(
+                    Enum.GetValues(typeof(VakType))
+                        .Cast<VakType>()
+                        .Select(v => new { Id = v, Name = v.ToString() }),
+                    "Id", "Name", vakViewModel.Vaktype
+                );
                 return View(vakViewModel);
             }
 
