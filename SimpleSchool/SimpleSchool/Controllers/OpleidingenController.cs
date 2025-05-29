@@ -64,7 +64,7 @@ namespace SimpleSchool.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData["OpleidingAangemaakt"] = false;
+                
                 return View(opleidingViewModel);
             }
 
@@ -122,6 +122,7 @@ namespace SimpleSchool.Controllers
 
             if (!ModelState.IsValid)
             {
+               
                 return View(opleidingViewModel);
             }
 
@@ -138,6 +139,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(opleiding);
             await _context.SaveChangesAsync();
+            TempData["OpleidingAangemaakt"] = true;
             return View(opleiding);
         }
 
@@ -169,6 +171,7 @@ namespace SimpleSchool.Controllers
             if (opleiding != null)
             {
                 _context.Opleiding.Remove(opleiding);
+                TempData["OpleidingDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

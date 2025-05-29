@@ -71,7 +71,7 @@ namespace SimpleSchool.Controllers
             {
                 ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
                 ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenKaartId);
-                TempData["LeerlingAangemaakt"] = false;
+                
                 return View(leerlingViewModel);
             }
             var leerling = new Leerling
@@ -156,6 +156,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(leerling);
             await _context.SaveChangesAsync();
+            TempData["LeerlingEdit"] = true;
             return View(leerling);
         }
 
@@ -188,6 +189,7 @@ namespace SimpleSchool.Controllers
             if (leerling != null)
             {
                 _context.Leerling.Remove(leerling);
+                TempData["LeerlingDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

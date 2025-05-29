@@ -9,6 +9,18 @@
         Er is succesvol een studentenkaart aangemaakt!
     </div>
 } 
+@if (TempData["StudentenKaartEdit"] != null && (bool)TempData["StudentenKaartEdit"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een studentenkaart aangepast!
+    </div>
+}
+@if (TempData["StudentenKaartDelete"] != null && (bool)TempData["StudentenKaartDelete"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een studentenkaart verwijderd!
+    </div>
+}
 
 
 <h1>Studentenkaarten</h1>

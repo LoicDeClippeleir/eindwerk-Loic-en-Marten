@@ -66,7 +66,7 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Vakken = new MultiSelectList(_context.Vak.ToList(), "Id", "Naam", leerkrachtViewModel.VakkenIds);// als de model state nie valid is dan moeten we terug de selectlist vullen voor in de index
-                TempData["LeerkrachtAangemaakt"] = false;
+                
                 return View(leerkrachtViewModel);
 
             }
@@ -154,6 +154,7 @@ namespace SimpleSchool.Controllers
 
             _context.Update(leerkracht);
             await _context.SaveChangesAsync();
+            TempData["LeerkrachtGeedit"] = true;
             return View(leerkracht);
         }
 
@@ -183,6 +184,7 @@ namespace SimpleSchool.Controllers
             var leerkracht = await _context.Leerkracht.FindAsync(id);
             if (leerkracht != null)
             {
+                TempData["LeerkrachtGedelete"] = true;
                 _context.Leerkracht.Remove(leerkracht);
             }
 

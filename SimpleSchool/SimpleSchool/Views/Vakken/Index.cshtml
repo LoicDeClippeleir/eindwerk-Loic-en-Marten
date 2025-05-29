@@ -11,6 +11,18 @@
         Er is succesvol een vak aangemaakt!
     </div>
 } 
+@if (TempData["VakEdit"] != null && (bool)TempData["VakEdit"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een vak aangepast!
+    </div>
+}
+@if (TempData["VakDelete"] != null && (bool)TempData["VakDelete"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een vak verwijderd!
+    </div>
+}
 
 
 <p>

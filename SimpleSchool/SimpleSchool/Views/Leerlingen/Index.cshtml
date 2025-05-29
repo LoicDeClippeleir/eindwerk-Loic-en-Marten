@@ -11,6 +11,18 @@
         Er is succesvol een Leerling aangemaakt!
     </div>
 } 
+@if (TempData["LeerlingEdit"] != null && (bool)TempData["LeerlingEdit"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Leerling aangepast!
+    </div>
+}
+@if (TempData["LeerlingDelete"] != null && (bool)TempData["LeerlingDelete"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Leerling verwijderd!
+    </div>
+}
 
 
 <p>
