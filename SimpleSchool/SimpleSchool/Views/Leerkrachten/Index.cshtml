@@ -11,6 +11,18 @@
         Er is succesvol een Leerkracht aangemaakt!
     </div>
 } 
+@if (TempData["LeerkrachtGeedit"] != null && (bool)TempData["LeerkrachtGeedit"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Leerkracht aangepast!
+    </div>
+}
+@if (TempData["LeerkrachtGedelete"] != null && (bool)TempData["LeerkrachtGedelete"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Leerkracht verwijderd!
+    </div>
+}
 
 
 <p>

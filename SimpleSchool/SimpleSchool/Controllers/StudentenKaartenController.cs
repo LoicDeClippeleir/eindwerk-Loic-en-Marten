@@ -64,7 +64,7 @@ namespace SimpleSchool.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData["StudentenKaartAangemaakt"] = false;
+                
                 return View(studentenKaartViewModel);
             }
 
@@ -78,7 +78,7 @@ namespace SimpleSchool.Controllers
             _context.StudentenKaart.Add(studentenKaart);
             await _context.SaveChangesAsync();
             TempData["StudentenKaartAangemaakt"] = true;
-            return View(studentenKaart);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: StudentenKaarten/Edit/5
@@ -103,7 +103,7 @@ namespace SimpleSchool.Controllers
                 Klas = studentenKaart.Klas,
                 School = studentenKaart.School
             };
-
+            
             return View(viewModel);
         }
 
@@ -136,7 +136,9 @@ namespace SimpleSchool.Controllers
 
             _context.Update(studentenKaart);
             await _context.SaveChangesAsync();
-            return View(studentenKaart);
+            TempData["StudentenKaartEdit"] = true;
+            
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: StudentenKaarten/Delete/5
@@ -167,6 +169,7 @@ namespace SimpleSchool.Controllers
             if (studentenKaart != null)
             {
                 _context.StudentenKaart.Remove(studentenKaart);
+                TempData["StudentenKaartDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

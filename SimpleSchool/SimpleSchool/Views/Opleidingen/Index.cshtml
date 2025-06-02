@@ -11,6 +11,18 @@
         Er is succesvol een Opleiding aangemaakt!
     </div>
 } 
+@if (TempData["OpleidingEdit"] != null && (bool)TempData["OpleidingEdit"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Opleiding aangepast!
+    </div>
+}
+@if (TempData["OpleidingDelete"] != null && (bool)TempData["OpleidingDelete"])
+{
+    <div class="alert alert-success" role="alert">
+        Er is succesvol een Opleiding aangemaakt!
+    </div>
+}
 
 
 <p>

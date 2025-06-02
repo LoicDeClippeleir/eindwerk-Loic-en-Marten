@@ -55,8 +55,9 @@ namespace SimpleSchool.Controllers
         // GET: Leerlingen/Create
         public IActionResult Create()
         {
-            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Id");
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Id");
+            ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam");
+            ViewData["StudentenkaartId"] = new SelectList(
+                _context.StudentenKaart.Where(sk => sk.Leerling == null), "Id", "Naam");
             return View(new LeerlingCreateViewModel());
         }
 
@@ -65,12 +66,13 @@ namespace SimpleSchool.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,Email,Adres,StudentenkaartId,OpleidingId")] LeerlingCreateViewModel leerlingViewModel)
+        public async Task<IActionResult> Create([Bind("Id,Naam,GeboorteDatum,Email,Adres,StudentenKaartId,OpleidingId")] LeerlingCreateViewModel leerlingViewModel)
         {
             if (!ModelState.IsValid)
             {
                 ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
-                ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenKaartId);
+                ViewData["StudentenkaartId"] = new SelectList(
+                    _context.StudentenKaart.Where(sk => sk.Leerling == null), "Id", "Naam", leerlingViewModel.StudentenKaartId);
                 TempData["LeerlingAangemaakt"] = false;
                 return View(leerlingViewModel);
             }
@@ -86,7 +88,7 @@ namespace SimpleSchool.Controllers
             _context.Leerling.Add(leerling);
             TempData["LeerlingAangemaakt"] = true;
             await _context.SaveChangesAsync();
-            return View(leerling);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerlingen/Edit/5
@@ -118,7 +120,10 @@ namespace SimpleSchool.Controllers
             };
 
             ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", viewModel.OpleidingId);
-            ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", viewModel.StudentenkaartId);
+            ViewData["StudentenkaartId"] = new SelectList(
+                _context.StudentenKaart
+                    .Where(sk => sk.Leerling == null || sk.Id == viewModel.StudentenkaartId),
+                "Id", "Naam", viewModel.StudentenkaartId);
             return View(viewModel);
         }
 
@@ -137,7 +142,10 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["OpleidingId"] = new SelectList(_context.Opleiding, "Id", "Naam", leerlingViewModel.OpleidingId);
-                ViewData["StudentenkaartId"] = new SelectList(_context.StudentenKaart, "Id", "Naam", leerlingViewModel.StudentenkaartId);
+                ViewData["StudentenkaartId"] = new SelectList(
+                    _context.StudentenKaart
+                        .Where(sk => sk.Leerling == null || sk.Id == leerlingViewModel.StudentenkaartId),
+                    "Id", "Naam", leerlingViewModel.StudentenkaartId);
                 return View(leerlingViewModel);
             }
 
@@ -156,7 +164,9 @@ namespace SimpleSchool.Controllers
 
             _context.Update(leerling);
             await _context.SaveChangesAsync();
-            return View(leerling);
+            TempData["LeerlingEdit"] = true;
+           
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerlingen/Delete/5
@@ -188,6 +198,7 @@ namespace SimpleSchool.Controllers
             if (leerling != null)
             {
                 _context.Leerling.Remove(leerling);
+                TempData["LeerlingDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

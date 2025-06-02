@@ -11,6 +11,7 @@ using SimpleSchool.Models;
 using SimpleSchool.Viewmodels;
 using SimpleSchool.Viewmodels.Vak;
 
+
 namespace SimpleSchool.Controllers
 {
     [Authorize]
@@ -53,7 +54,13 @@ namespace SimpleSchool.Controllers
         [Authorize(Roles = "Leerkracht")]
         public IActionResult Create()
         {
-            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Id");
+            ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam");
+            ViewBag.Vaktypes = new SelectList(
+                Enum.GetValues(typeof(VakType))
+                    .Cast<VakType>()
+                    .Select(v => new { Id = v, Name = v.ToString() }),
+                "Id", "Name"
+            );
             return View(new VakCreateViewModel());
         }
 
@@ -67,7 +74,12 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
-                TempData["VakAangemaakt"] = false;
+                ViewBag.Vaktypes = new SelectList(
+                    Enum.GetValues(typeof(VakType))
+                        .Cast<VakType>()
+                        .Select(v => new { Id = v, Name = v.ToString() }),
+                    "Id", "Name", vakViewModel.Vaktype
+                );
                 return View(vakViewModel);
             }
 
@@ -83,7 +95,7 @@ namespace SimpleSchool.Controllers
             _context.Vak.Add(vak);
             await _context.SaveChangesAsync();
             TempData["VakAangemaakt"] = true;
-            return View(vak);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Edit/5
@@ -112,6 +124,12 @@ namespace SimpleSchool.Controllers
             };
 
             ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", viewModel.LeerkrachtId);
+            ViewBag.Vaktypes = new SelectList(
+                Enum.GetValues(typeof(VakType))
+                    .Cast<VakType>()
+                    .Select(v => new { Id = v, Name = v.ToString() }),
+                "Id", "Name", viewModel.Vaktype
+            );
             return View(viewModel);
         }
 
@@ -130,6 +148,12 @@ namespace SimpleSchool.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["LeerkrachtId"] = new SelectList(_context.Leerkracht, "Id", "Naam", vakViewModel.LeerkrachtId);
+                ViewBag.Vaktypes = new SelectList(
+                    Enum.GetValues(typeof(VakType))
+                        .Cast<VakType>()
+                        .Select(v => new { Id = v, Name = v.ToString() }),
+                    "Id", "Name", vakViewModel.Vaktype
+                );
                 return View(vakViewModel);
             }
 
@@ -147,7 +171,9 @@ namespace SimpleSchool.Controllers
 
             _context.Update(vak);
             await _context.SaveChangesAsync();
-            return View(vak);
+            TempData["VakEdit"] = true;
+            
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Vakken/Delete/5
@@ -179,6 +205,7 @@ namespace SimpleSchool.Controllers
             if (vak != null)
             {
                 _context.Vak.Remove(vak);
+                TempData["VakDelete"] = true;
             }
 
             await _context.SaveChangesAsync();

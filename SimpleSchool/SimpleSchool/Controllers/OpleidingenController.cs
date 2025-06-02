@@ -64,7 +64,7 @@ namespace SimpleSchool.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData["OpleidingAangemaakt"] = false;
+                
                 return View(opleidingViewModel);
             }
 
@@ -78,7 +78,7 @@ namespace SimpleSchool.Controllers
             _context.Opleiding.Add(opleiding);
             await _context.SaveChangesAsync();
             TempData["OpleidingAangemaakt"] = true;
-            return View(opleiding);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Opleidingen/Edit/5
@@ -122,6 +122,7 @@ namespace SimpleSchool.Controllers
 
             if (!ModelState.IsValid)
             {
+               
                 return View(opleidingViewModel);
             }
 
@@ -138,7 +139,9 @@ namespace SimpleSchool.Controllers
 
             _context.Update(opleiding);
             await _context.SaveChangesAsync();
-            return View(opleiding);
+            TempData["OpleidingAangemaakt"] = true;
+           
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Opleidingen/Delete/5
@@ -169,6 +172,7 @@ namespace SimpleSchool.Controllers
             if (opleiding != null)
             {
                 _context.Opleiding.Remove(opleiding);
+                TempData["OpleidingDelete"] = true;
             }
 
             await _context.SaveChangesAsync();
