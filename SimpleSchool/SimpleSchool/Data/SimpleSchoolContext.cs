@@ -32,5 +32,6 @@ namespace SimpleSchool.Data
         public DbSet<SimpleSchool.Models.Opleiding> Opleiding { get; set; } = default!;
         public DbSet<SimpleSchool.Models.StudentenKaart> StudentenKaart { get; set; } = default!;
         public DbSet<SimpleSchool.Models.Vak> Vak { get; set; } = default!;
+        public DbSet<LogLogin> LoginLogs { get; set; }
     }
 }
