@@ -82,7 +82,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync(); 
             
             TempData["LeerkrachtAangemaakt"] = true;
-            return View(leerkracht);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Leerkrachts/Edit/5
