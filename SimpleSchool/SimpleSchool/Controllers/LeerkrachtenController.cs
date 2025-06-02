@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ using SimpleSchool.Viewmodels.Leerkracht;
 
 namespace SimpleSchool.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Leerkracht")]
     public class LeerkrachtenController : Controller
     {
         private readonly SimpleSchoolContext _context;
