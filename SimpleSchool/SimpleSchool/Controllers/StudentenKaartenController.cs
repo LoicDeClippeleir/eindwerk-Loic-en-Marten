@@ -138,7 +138,7 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync();
             TempData["StudentenKaartEdit"] = true;
             
-            return RedirectToAction("Create", "Opleidingen");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: StudentenKaarten/Delete/5

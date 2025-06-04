@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,16 +18,14 @@ namespace SimpleSchool.Controllers
     {
 
         private readonly SimpleSchoolContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        public LeerlingenController(SimpleSchoolContext context, UserManager<IdentityUser> userManager)
+        
+        public LeerlingenController(SimpleSchoolContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
-
         // GET: Leerlingen
-
+       
         public async Task<IActionResult> Index()
         {
             var simpleSchoolContext = _context.Leerling.Include(l => l.Opleiding).Include(l => l.Studentenkaart);
@@ -207,23 +204,6 @@ namespace SimpleSchool.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [Authorize(Roles = "Leerkracht")]
-        public async Task<IActionResult> MijnLeerlingen()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            var leerkracht = await _context.Leerkracht
-                .Include(l => l.Vakken)
-                .FirstOrDefaultAsync(l => l.EMail == user.Email);
-
-            var vakIds = leerkracht.Vakken.Select(v => v.Id).ToList();
-
-            var leerlingen = await _context.Leerling
-                .Where(l => l.Opleiding.Vakken.Any(v => vakIds.Contains(v.Id)))
-                .ToListAsync();
-
-            return View(leerlingen);
-        }
-
 
         private bool LeerlingExists(int id)
         {

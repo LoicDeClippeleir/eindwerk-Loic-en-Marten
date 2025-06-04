@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,25 +17,16 @@ namespace SimpleSchool.Controllers
     public class OpleidingenController : Controller
     {
         private readonly SimpleSchoolContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
 
-        public OpleidingenController(SimpleSchoolContext context, UserManager<IdentityUser> userManager)
+        public OpleidingenController(SimpleSchoolContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         // GET: Opleidingen
-        [Authorize(Roles = "Leerling")]
+        
         public async Task<IActionResult> Index()
         {
-            var user = await _userManager.GetUserAsync(User);
-            var leerling = await _context.Leerling.FirstOrDefaultAsync(l => l.EMail == user.Email);
-            if (leerling == null || leerling.StudentenkaartId == 0)
-            {
-                // Toon alleen studentenkaart-index of redirect naar studentenkaart aanmaken
-                return RedirectToAction("Create", "StudentenKaarten");
-            }
             return View(await _context.Opleiding.ToListAsync());
         }
 
