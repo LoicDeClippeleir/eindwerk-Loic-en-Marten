@@ -39,50 +39,10 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Leerlingen}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-/*async Task SeedRoles(IServiceProvider serviceProvider)
-{
-    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    string[] roles = { "Leerkracht", "Leerling" };
-
-    foreach (var role in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
-
-    // Voeg standaard Leerkracht toe
-    string leerkrachtEmail = "leerkracht@school.be";
-    string leerkrachtWachtwoord = "Leerkracht123!";
-
-    var leerkrachtUser = await userManager.FindByEmailAsync(leerkrachtEmail);
-    if (leerkrachtUser == null)
-    {
-        leerkrachtUser = new IdentityUser
-        {
-            UserName = leerkrachtEmail,
-            Email = leerkrachtEmail,
-            EmailConfirmed = true
-        };
-        var result = await userManager.CreateAsync(leerkrachtUser, leerkrachtWachtwoord);
-        if (result.Succeeded)
-        {
-            await userManager.AddToRoleAsync(leerkrachtUser, "Leerkracht");
-        }
-    }
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    await SeedRoles(services);
-};*/
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
